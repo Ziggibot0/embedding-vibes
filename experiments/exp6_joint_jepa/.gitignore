@@ -1,0 +1,3 @@
+data/
+*.log
+results/model_proj*.pt

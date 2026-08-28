@@ -36,43 +36,93 @@ torch.manual_seed(SEED)
 np.random.seed(SEED)
 
 
+class DMLSafeLayerNorm(nn.Module):
+    """LayerNorm implemented with basic ops (DML doesn't support torch.layer_norm).
+
+    Uses mean/var over the last dim, which torch-directml does support.
+    """
+    def __init__(self, dim, eps=1e-5):
+        super().__init__()
+        self.eps = eps
+        self.weight = nn.Parameter(torch.ones(dim))
+        self.bias = nn.Parameter(torch.zeros(dim))
+
+    def forward(self, x):
+        mean = x.mean(-1, keepdim=True)
+        var = ((x - mean) ** 2).mean(-1, keepdim=True)
+        return (x - mean) / torch.sqrt(var + self.eps) * self.weight + self.bias
+
+
 # ---------------------------------------------------------------------------
 # Model: small transformer encoder (from scratch)
 # ---------------------------------------------------------------------------
+class TransformerBlock(nn.Module):
+    """Pre-norm transformer encoder block using DML-safe LayerNorm."""
+    def __init__(self, d_model, n_heads, d_ff, dropout=0.1):
+        super().__init__()
+        self.ln1 = DMLSafeLayerNorm(d_model)
+        self.attn = nn.MultiheadAttention(d_model, n_heads, dropout, batch_first=True)
+        self.ln2 = DMLSafeLayerNorm(d_model)
+        self.ff = nn.Sequential(
+            nn.Linear(d_model, d_ff), nn.GELU(), nn.Dropout(dropout),
+            nn.Linear(d_ff, d_model), nn.Dropout(dropout),
+        )
+
+    def forward(self, x, key_padding_mask=None):
+        # pre-norm attention
+        h = self.ln1(x)
+        attn_out, _ = self.attn(h, h, h, key_padding_mask=key_padding_mask)
+        x = x + attn_out
+        # pre-norm FFN
+        h = self.ln2(x)
+        x = x + self.ff(h)
+        return x
+
+
 class TextEncoder(nn.Module):
     """Small transformer encoder: token ids -> step embedding e_t (PROJ_DIM).
 
     This IS the embedding model — it consumes raw text and produces a
     task-trained embedding. Not downstream of any frozen embedding model.
+
+    NOTE: nn.Embedding and torch.layer_norm are not supported on
+    torch-directml (DML). We keep the token embedding on CPU (a cheap gather)
+    and use DMLSafeLayerNorm for the transformer layers.
     """
     def __init__(self, vocab_size, d_model=256, n_layers=4, n_heads=4,
                  d_ff=512, proj_dim=64, max_len=256, dropout=0.1):
         super().__init__()
         self.d_model = d_model
         self.proj_dim = proj_dim
-        self.tok_emb = nn.Embedding(vocab_size, d_model)
-        self.pos_emb = nn.Embedding(max_len, d_model)
+        self.tok_emb = nn.Embedding(vocab_size, d_model)  # stays on CPU
+        self.pos_emb = nn.Embedding(max_len, d_model)     # stays on CPU
         self.drop = nn.Dropout(dropout)
         self.blocks = nn.ModuleList([
-            nn.TransformerEncoderLayer(d_model, n_heads, d_ff, dropout,
-                                       batch_first=True, norm_first=True)
+            TransformerBlock(d_model, n_heads, d_ff, dropout)
             for _ in range(n_layers)
         ])
-        self.norm = nn.LayerNorm(d_model)
+        self.norm = DMLSafeLayerNorm(d_model)
         # MLM head (language grounding)
         self.mlm_head = nn.Linear(d_model, vocab_size)
         # Projection to compact step embedding
         self.proj = nn.Sequential(
-            nn.Linear(d_model, 128), nn.LayerNorm(128), nn.GELU(),
-            nn.Linear(128, proj_dim), nn.LayerNorm(proj_dim),
+            nn.Linear(d_model, 128), DMLSafeLayerNorm(128), nn.GELU(),
+            nn.Linear(128, proj_dim), DMLSafeLayerNorm(proj_dim),
         )
+
+    def _embed(self, tok_ids):
+        """Token lookup on CPU, then move dense vectors to compute device."""
+        cpu = tok_ids.cpu()
+        x = self.tok_emb(cpu) + self.pos_emb(
+            torch.arange(cpu.shape[1], device=cpu.device))
+        return x.to(tok_ids.device)
 
     def forward(self, tok_ids, mask=None):
         B, T = tok_ids.shape
-        x = self.tok_emb(tok_ids) + self.pos_emb(torch.arange(T, device=tok_ids.device))
+        x = self._embed(tok_ids)
         x = self.drop(x)
         for blk in self.blocks:
-            x = blk(x, src_key_padding_mask=(mask == 0) if mask is not None else None)
+            x = blk(x, key_padding_mask=(mask == 0) if mask is not None else None)
         x = self.norm(x)
         # step embedding = mean-pool over tokens (masked)
         if mask is not None:
@@ -85,10 +135,10 @@ class TextEncoder(nn.Module):
     def mlm_logits(self, tok_ids, mask=None):
         """Full forward for MLM: returns logits over vocab at each position."""
         B, T = tok_ids.shape
-        x = self.tok_emb(tok_ids) + self.pos_emb(torch.arange(T, device=tok_ids.device))
+        x = self._embed(tok_ids)
         x = self.drop(x)
         for blk in self.blocks:
-            x = blk(x, src_key_padding_mask=(mask == 0) if mask is not None else None)
+            x = blk(x, key_padding_mask=(mask == 0) if mask is not None else None)
         x = self.norm(x)
         return self.mlm_head(x)
 
@@ -99,7 +149,7 @@ class JEPAPredictor(nn.Module):
         super().__init__()
         self.horizons = horizons
         self.trunk = nn.Sequential(
-            nn.Linear(in_dim, hidden), nn.LayerNorm(hidden), nn.GELU())
+            nn.Linear(in_dim, hidden), DMLSafeLayerNorm(hidden), nn.GELU())
         self.heads = nn.ModuleDict({
             str(k): nn.Sequential(nn.Linear(hidden, hidden), nn.GELU(),
                                  nn.Linear(hidden, in_dim))
@@ -219,9 +269,24 @@ def main():
     enc_ema.load_state_dict(enc.state_dict())
     for p in enc_ema.parameters():
         p.requires_grad_(False)
+    # Keep token/pos embeddings on CPU (DML doesn't support nn.Embedding)
+    if args.device == "dml":
+        for m in (enc, enc_ema):
+            m.tok_emb = m.tok_emb.cpu()
+            m.pos_emb = m.pos_emb.cpu()
 
     opt = torch.optim.AdamW(list(enc.parameters()) + list(pred.parameters()),
                             lr=args.lr, weight_decay=1e-5)
+    # On DML, embeddings live on CPU -> separate optimizer for them
+    if args.device == "dml":
+        dml_params = [p for p in list(enc.parameters()) + list(pred.parameters())
+                      if p.device.type != "cpu"]
+        cpu_params = [p for p in list(enc.parameters()) + list(pred.parameters())
+                      if p.device.type == "cpu"]
+        opt = torch.optim.AdamW(dml_params, lr=args.lr, weight_decay=1e-5)
+        opt_cpu = torch.optim.AdamW(cpu_params, lr=args.lr, weight_decay=1e-5)
+    else:
+        opt_cpu = None
 
     n_params = sum(p.numel() for p in enc.parameters()) + sum(p.numel() for p in pred.parameters())
     print(f"Trainable params: {n_params/1e6:.2f}M")
@@ -244,6 +309,15 @@ def main():
             tok_ids = pad_batch(seqs).to(device)
             mask = (tok_ids != pad_id).float()
             masked, labels = mask_tokens(tok_ids, mask_id, pad_id)
+            if args.device == "dml":
+                assert tok_ids.device.type == "privateuseone", f"tok_ids {tok_ids.device}"
+                assert mask.device.type == "privateuseone", f"mask {mask.device}"
+                assert masked.device.type == "privateuseone", f"masked {masked.device}"
+                assert labels.device.type == "privateuseone", f"labels {labels.device}"
+                assert enc.blocks[0].ln1.weight.device.type == "privateuseone", \
+                    f"ln1 {enc.blocks[0].ln1.weight.device}"
+                assert enc_ema.blocks[0].ln1.weight.device.type == "privateuseone", \
+                    f"ema ln1 {enc_ema.blocks[0].ln1.weight.device}"
 
             # MLM loss
             logits = enc.mlm_logits(masked, mask)
@@ -293,15 +367,24 @@ def main():
 
             loss = loss_mlm + args.lambda_bt * loss_bt + args.beta_jepa * loss_jepa
             opt.zero_grad()
+            if opt_cpu is not None:
+                opt_cpu.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(
                 list(enc.parameters()) + list(pred.parameters()), 1.0)
             opt.step()
+            if opt_cpu is not None:
+                opt_cpu.step()
 
             # EMA update
             with torch.no_grad():
                 for p, p_ema in zip(enc.parameters(), enc_ema.parameters()):
                     p_ema.data.mul_(0.99).add_(p.data, alpha=0.01)
+            if args.device == "dml":
+                bad = [n for n, p in enc_ema.named_parameters()
+                       if p.device.type != "privateuseone" and "tok_emb" not in n and "pos_emb" not in n]
+                if bad:
+                    raise RuntimeError(f"EMA moved params to CPU: {bad[:5]}")
 
             total += loss.item()
             n_batch += 1
@@ -313,7 +396,7 @@ def main():
         all_e = []
         for si, items in session_steps.items():
             for ti, ids in items[:1]:
-                t = torch.tensor([ids], dtype=torch.long)
+                t = torch.tensor([ids], dtype=torch.long, device=device)
                 m = (t != pad_id).float()
                 e, _ = enc(t, m)
                 all_e.append(e)

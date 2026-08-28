@@ -221,7 +221,7 @@ For each trajectory, generate training triples:
 
 ### File structure
 ```
-experiments/exp3_jepa/
+experiments/exp4_jepa/
   README.md           ← this file
   data_prep.py        ← embed trajectories, build training triples
   model.py            ← projector, predictor, loss functions
@@ -261,7 +261,7 @@ experiments/exp3_jepa/
 ## Falsification tests for this architecture
 
 1. **Normalization test**: does the trained projector reduce paraphrase distance vs frozen encoder? If no, Barlow Twins isn't normalizing.
-2. **Chunking recovery test**: does the trained projector recover the signal lost by chunking in exp2? If yes, normalization works. If no, the problem isn't normalization.
+2. **Chunking recovery test**: does the trained projector recover the signal lost by chunking in exp2 (chunking ablation)? If yes, normalization works. If no, the problem isn't normalization.
 3. **Prediction test**: can the predictor forecast z_{t+k} better than a baseline (mean of training trajectories)? If no, JEPA prediction adds nothing.
 4. **Trepidation test**: do failed trajectories have higher cross-horizon variance? If no, trepidation is not a real signal.
 5. **Outcome prediction test**: does the projector+predictor beat the frozen-embedding linear probe (exp1) at earlier prediction horizons? This is the key comparison — if JEPA doesn't beat the linear probe, it's not worth the complexity.

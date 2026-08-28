@@ -1,4 +1,4 @@
-# Experiment 2a: Chunking Strategy Ablation
+# Experiment 2: Chunking Strategy Ablation
 
 ## Question
 Which temporal chunking strategy yields the most signal for fallacy detection in embedding space?

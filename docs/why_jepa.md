@@ -27,7 +27,7 @@ The encoder is TRAINED to normalize surface variation and expose reasoning struc
 |---|---|---|---|---|
 | Exp1 | Frozen (nomic/qwen3) | None (whole statement) | AUC 0.87-0.99 | Signal is holistic, detects surface patterns |
 | Exp2 | Frozen (nomic) | Sentence/connective/clause | AUC 0.91-0.97 (no improvement) | Chunking loses context, surface noise dominates |
-| Exp3 | JEPA-trained (Barlow Twins) | Step-level | Predicted: should exceed frozen | Needs training data + training compute |
+|| Exp4 | JEPA-trained (Barlow Twins) | Step-level | Predicted: should exceed frozen | Needs training data + training compute |
 
 ## The reviewer answer
 

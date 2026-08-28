@@ -1,4 +1,4 @@
-# Experiment 2: Markov Chain Fallacy Detection on Agentic Embedding Trajectories
+# Experiment 3: Markov Chain Fallacy Detection on Agentic Embedding Trajectories
 
 ## Title
 "Markov Vibes: Do Agentic Reasoning Trajectories Have Fallacy-Specific Transition Structure in Embedding Space?"

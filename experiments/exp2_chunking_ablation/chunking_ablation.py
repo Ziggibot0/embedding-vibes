@@ -1,5 +1,5 @@
 """
-Experiment 2a: Chunking Strategy Ablation
+Experiment 2: Chunking Strategy Ablation
 Tests 4 chunking methods to see which yields the most fallacy detection signal.
 """
 import csv, json, re, os, time, numpy as np

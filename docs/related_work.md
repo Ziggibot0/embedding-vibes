@@ -8,7 +8,7 @@
 - **KEY FINDING**: CoT reasoning traces structured trajectories through representation space. Each reasoning step occupies a distinct, linearly separable region. Early steps are correctness-invariant. Late steps diverge systematically between correct and incorrect solutions.
 - **CORRECTNESS PREDICTION**: Linear classifiers on late-step trajectory features achieve ROC-AUC 0.87 for predicting final-answer correctness BEFORE the answer is emitted.
 - **STEERING**: Trajectory-based interventions improve accuracy +7.6% on 6-step, +7.69% on 7-step problems with >97% preservation rate.
-- **RELEVANCE**: This is the closest existing work. They proved the signal exists and used linear probes + steering. Our JEPA predictor would be a LEARNED version of their linear probe — predicting trajectory destination rather than just classifying current state. They did the existence proof; we'd be extending to learned prediction + wave interference aggregation.
+- **RELEVANCE**: This is the closest existing work. They proved the signal exists and used linear probes + steering. Our JEPA predictor would be a LEARNED version of their linear probe — predicting trajectory destination rather than just classifying current state. They did the existence proof; we'd be extending to learned prediction + trajectory aggregation.
 
 ### Latent-Trajectory Signals (ICLR 2026)
 - arXiv: 2510.10494 (Microsoft Research)
@@ -75,15 +75,17 @@
 - arXiv: 2510.08049
 - PRMs score individual reasoning steps in token space. Our approach scores trajectory DESTINATION in embedding space. Fundamentally different mechanism.
 
-## 6. Quantum cognition / wave interference (the speculative bridge)
+## 6. Quantum cognition / wave interference (the speculative bridge) — TABLED
+
+> **SCOPE (2026-08-28):** This section is the theoretical grounding for the wave-interference idea, which is TABLED as a separate project. It is retained here for reference only and is NOT part of the current embedding-vibes scope.
 
 ### Quantum Interference in Cognition (2012, Aerts et al.)
 - Two superposed layers in human thought: classical logical + quantum conceptual. The quantum conceptual layer is responsible for deviations from classically expected reasoning.
-- **RELEVANCE**: Theoretical precedent for wave interference in cognition. Our approach applies this to embedding space operations.
+- **RELEVANCE**: Theoretical precedent for wave interference in cognition. (Tabled — separate project.)
 
 ### Quantum-like Cognition and AI (2026, Springer)
 - Superposition and interference can improve sampling efficiency. Entanglement enables encoding correlations difficult to represent classically.
-- **RELEVANCE**: Motivates wave interference as a computational mechanism for AI, not just a metaphor.
+- **RELEVANCE**: Motivates wave interference as a computational mechanism for AI, not just a metaphor. (Tabled — separate project.)
 
 ## 7. Agent trajectory datasets (training data)
 

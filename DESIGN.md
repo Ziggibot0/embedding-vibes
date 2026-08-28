@@ -1,5 +1,10 @@
 # embedding-vibes — design notes
 
+## Scope (2026-08-28)
+
+- **No NPU.** The XDNA 2 NPU is out of scope for this project. All compute runs on CPU/iGPU.
+- **Wave interference is TABLED.** The "vector addition of embeddings IS interference" idea is a separate project, not part of embedding-vibes. This project does not use interference aggregation; it uses trajectory prediction + aggregation on CPU/iGPU.
+
 ## The core claim
 
 Logical fallacies have geometric signatures in embedding space. A predictor can learn these shapes without understanding logic — the same way humans get "vibes" about something being off without articulating why.
@@ -14,14 +19,11 @@ Logical fallacies have geometric signatures in embedding space. A predictor can 
 
 A pattern detector. "This trajectory's shape resembles trajectories that failed." Swirls of numbers that arrange themselves into shapes that a different mechanism can reason about.
 
-## Wave interference
+## Aggregation (in scope)
 
-Vector addition of embeddings IS interference. Not a metaphor — literal physics applied to vectors.
-
-- K candidate reasoning paths → K predicted embedding trajectories
-- Constructive interference (aligned trajectories) → large resultant → high confidence vibe
-- Destructive interference (opposing trajectories) → small resultant → trepidation
-- NPU computes the interference (batched matrix math, 50 TOPS sitting idle)
+K candidate reasoning paths → K predicted embedding trajectories. Aggregate on CPU/iGPU:
+- Aligned trajectories → high confidence vibe
+- Divergent trajectories → trepidation
 
 ## Gate experiment
 
@@ -45,6 +47,5 @@ If indistinguishable → embeddings don't carry the signal → dead.
 
 - Does embedding geometry actually distinguish fallacy from valid reasoning? (gate experiment)
 - Does the signal transfer across models? (GPT-5.2 failure patterns vs qwen35moe failure patterns)
-- Is wave interference more informative than static vector comparison? (needs ablation)
-- Can the NPU actually run the interference computation fast enough to be useful during generation?
-- What frequency/phase means for a trajectory through embedding space (not yet defined)
+- Does trajectory aggregation add signal over static vector comparison? (needs ablation)
+- What frequency/phase means for a trajectory through embedding space (not yet defined; tied to the tabled wave-interference project)

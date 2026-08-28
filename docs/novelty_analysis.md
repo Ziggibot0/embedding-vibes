@@ -28,37 +28,40 @@ Nobody uses JEPA to train a PREDICTOR that forecasts future trajectory states.
 Microsoft used linear probes (supervised, static). We'd use JEPA (self-supervised, predictive).
 **This is novel but incremental.** A reviewer might say "it's a linear probe with extra steps."
 
-### 2. Wave interference aggregation across candidate trajectories
-No existing work adds/superposes predicted trajectory embeddings from K candidates and interprets the resultant as constructive/destructive interference.
+### 2. Trajectory aggregation across candidate trajectories
+No existing work adds/superposes predicted trajectory embeddings from K candidates and interprets the resultant as confidence/trepidation.
 Latent-Trajectory signals use individual trajectory metrics. Majority vote uses answer matching.
-Interference in embedding space across reasoning candidates is genuinely new.
-**This is the strongest novelty claim.** Nobody has done this. The quantum cognition literature provides theoretical grounding but no implementation in LLM reasoning.
+Aggregation in embedding space across reasoning candidates is genuinely new.
+**This is a strong novelty claim.** Nobody has done this. The quantum cognition literature provides theoretical grounding but no implementation in LLM reasoning.
+
+> **SCOPE NOTE (2026-08-28):** The wave-interference framing (constructive/destructive, phase/frequency) is TABLED — a separate project. This project keeps the aggregation mechanism but does not frame it as wave interference, and does not use the NPU.
 
 ### 3. Geometric fallacy detection (no reasoning)
 Existing fallacy detection uses LLM reasoning or structure-aware classifiers.
 Nobody has tried: embed the argument, check if its trajectory shape matches known fallacy shapes.
 **Novel application.** The connection between "Geometry of Reasoning" (logical structure = geometry) and fallacy detection (fallacies = geometric deviations) has not been made operational.
 
-### 4. NPU as interference computation substrate
-Nobody has used the NPU for embedding-space operations during LLM inference.
-**Novel hardware contribution.** But this is engineering, not science. A reviewer might not care.
+### 4. ~~NPU as interference computation substrate~~ (TABLED)
+~~Nobody has used the NPU for embedding-space operations during LLM inference.~~
+~~**Novel hardware contribution.** But this is engineering, not science. A reviewer might not care.~~
+**Removed from scope (2026-08-28).** The NPU is not used in this project. Compute runs on CPU/iGPU.
 
 ## Honest novelty assessment
 
 | Contribution | Novelty | Risk |
 |---|---|---|
 | JEPA trajectory predictor | Medium — extends linear probe to learned predictor | Low (incremental but solid) |
-| Wave interference aggregation | HIGH — no prior work | Medium (might not beat majority vote) |
+| Trajectory aggregation | HIGH — no prior work | Medium (might not beat majority vote) |
 | Geometric fallacy detection | HIGH — no prior work | High (fallacy shapes might not be distinct) |
-| NPU interference | Medium — engineering novelty | Low (can be future work) |
+| ~~NPU interference~~ (TABLED) | — | — |
 
 ## What a reviewer would attack
 
 1. "JEPA predictor is just a learned linear probe. What does JEPA add over supervised prediction?"
    - Answer: self-supervised (no labels needed), multi-horizon prediction, Barlow Twins gives structured embedding space. But need ablation: JEPA vs supervised MLP vs linear probe.
 
-2. "Wave interference is just weighted vector addition. Why call it interference?"
-   - Answer: need to show it's MORE than weighted sum. Phase/frequency components? The interference framing must provide additional signal beyond magnitude. If it's just Σ w_i z_i, a reviewer is right.
+2. "Trajectory aggregation is just weighted vector addition. Why is it novel?"
+   - Answer: need to show it's MORE than weighted sum. The aggregation framing must provide additional signal beyond magnitude. If it's just Σ w_i z_i, a reviewer is right. (Note: the wave-interference framing that would add phase/frequency is tabled as a separate project.)
 
 3. "Your fallacy detection results are on a small dataset. How do you generalize?"
    - Answer: need multiple datasets (Logic, AID-LF, 20K dataset) and multiple fallacy types.
@@ -73,7 +76,7 @@ Nobody has used the NPU for embedding-space operations during LLM inference.
 
 1. **Show a fallacy shape that's interpretable.** Not just "AUC 0.7" but "circular reasoning traces literal loops in embedding space, here's the plot." A reviewer seeing a figure where begging-the-question makes a circle in PCA space would be convinced.
 
-2. **Show interference beating majority vote by a clear margin in a specific regime.** Not overall, but in the hard cases (high disagreement, low confidence). "When 3/5 candidates agree, majority vote gets 60% but interference gets 80%."
+2. **Show aggregation beating majority vote by a clear margin in a specific regime.** Not overall, but in the hard cases (high disagreement, low confidence). "When 3/5 candidates agree, majority vote gets 60% but aggregation gets 80%."
 
 3. **Show the predictor working at step 2, not step 5.** Microsoft's linear probe works at late steps. If our JEPA predictor works at EARLY steps (because it's predictive, not just classificatory), that's a real advantage.
 

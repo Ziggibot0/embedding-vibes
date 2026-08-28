@@ -1,0 +1,197 @@
+{
+  "whole_mean": {
+    "strategy": "whole",
+    "aggregation": "mean",
+    "binary_auc": 0.9605128205128206,
+    "binary_auc_std": 0.015283619109235671,
+    "binary_acc": 0.9242424242424242,
+    "binary_acc_std": 0.02238690129647691,
+    "n_chunks_mean": 1.0,
+    "n_chunks_std": 0.0
+  },
+  "whole_last": {
+    "strategy": "whole",
+    "aggregation": "last",
+    "binary_auc": 0.9605128205128206,
+    "binary_auc_std": 0.015283619109235671,
+    "binary_acc": 0.9242424242424242,
+    "binary_acc_std": 0.02238690129647691,
+    "n_chunks_mean": 1.0,
+    "n_chunks_std": 0.0
+  },
+  "whole_maxnorm": {
+    "strategy": "whole",
+    "aggregation": "maxnorm",
+    "binary_auc": 0.9605128205128206,
+    "binary_auc_std": 0.015283619109235671,
+    "binary_acc": 0.9242424242424242,
+    "binary_acc_std": 0.02238690129647691,
+    "n_chunks_mean": 1.0,
+    "n_chunks_std": 0.0
+  },
+  "whole_mean_multiclass": {
+    "strategy": "whole",
+    "aggregation": "mean",
+    "multiclass_acc": 0.3230769230769231,
+    "multiclass_f1": 0.3011122211122211
+  },
+  "whole_last_multiclass": {
+    "strategy": "whole",
+    "aggregation": "last",
+    "multiclass_acc": 0.3230769230769231,
+    "multiclass_f1": 0.3011122211122211
+  },
+  "sentence_mean": {
+    "strategy": "sentence",
+    "aggregation": "mean",
+    "binary_auc": 0.9671794871794873,
+    "binary_auc_std": 0.015005782117849387,
+    "binary_acc": 0.9242424242424242,
+    "binary_acc_std": 0.02238690129647691,
+    "n_chunks_mean": 1.8616071428571428,
+    "n_chunks_std": 1.2150650728983823
+  },
+  "sentence_last": {
+    "strategy": "sentence",
+    "aggregation": "last",
+    "binary_auc": 0.9682051282051282,
+    "binary_auc_std": 0.017419130533821537,
+    "binary_acc": 0.9062626262626262,
+    "binary_acc_std": 0.021705658211819457,
+    "n_chunks_mean": 1.8616071428571428,
+    "n_chunks_std": 1.2150650728983823
+  },
+  "sentence_maxnorm": {
+    "strategy": "sentence",
+    "aggregation": "maxnorm",
+    "binary_auc": 0.9430769230769231,
+    "binary_auc_std": 0.02703125735659776,
+    "binary_acc": 0.9063636363636365,
+    "binary_acc_std": 0.025608799885355943,
+    "n_chunks_mean": 1.8616071428571428,
+    "n_chunks_std": 1.2150650728983823
+  },
+  "sentence_mean_multiclass": {
+    "strategy": "sentence",
+    "aggregation": "mean",
+    "multiclass_acc": 0.2974358974358974,
+    "multiclass_f1": 0.27816849816849815
+  },
+  "sentence_last_multiclass": {
+    "strategy": "sentence",
+    "aggregation": "last",
+    "multiclass_acc": 0.26666666666666666,
+    "multiclass_f1": 0.25468864468864466
+  },
+  "sentence_shape": {
+    "strategy": "sentence",
+    "fallacy_path_length_mean": 32.9273681640625,
+    "valid_path_length_mean": 23.106910705566406,
+    "path_length_p_value": 0.31821873784065247,
+    "fallacy_direction_changes_mean": 0.7403846153846154,
+    "valid_direction_changes_mean": 0.375,
+    "direction_changes_p_value": 0.6417778853362546
+  },
+  "connective_mean": {
+    "strategy": "connective",
+    "aggregation": "mean",
+    "binary_auc": 0.9591452991452993,
+    "binary_auc_std": 0.009100055831935874,
+    "binary_acc": 0.9242424242424242,
+    "binary_acc_std": 0.02238690129647691,
+    "n_chunks_mean": 1.4241071428571428,
+    "n_chunks_std": 0.6149543443730319
+  },
+  "connective_last": {
+    "strategy": "connective",
+    "aggregation": "last",
+    "binary_auc": 0.9656410256410257,
+    "binary_auc_std": 0.013464183704283926,
+    "binary_acc": 0.933131313131313,
+    "binary_acc_std": 0.0196531499103278,
+    "n_chunks_mean": 1.4241071428571428,
+    "n_chunks_std": 0.6149543443730319
+  },
+  "connective_maxnorm": {
+    "strategy": "connective",
+    "aggregation": "maxnorm",
+    "binary_auc": 0.9478632478632478,
+    "binary_auc_std": 0.024534530075909947,
+    "binary_acc": 0.9108080808080808,
+    "binary_acc_std": 0.027875127852268738,
+    "n_chunks_mean": 1.4241071428571428,
+    "n_chunks_std": 0.6149543443730319
+  },
+  "connective_mean_multiclass": {
+    "strategy": "connective",
+    "aggregation": "mean",
+    "multiclass_acc": 0.29743589743589743,
+    "multiclass_f1": 0.28514041514041516
+  },
+  "connective_last_multiclass": {
+    "strategy": "connective",
+    "aggregation": "last",
+    "multiclass_acc": 0.2512820512820513,
+    "multiclass_f1": 0.23488400488400485
+  },
+  "connective_shape": {
+    "strategy": "connective",
+    "fallacy_path_length_mean": 21.94795036315918,
+    "valid_path_length_mean": 18.274965286254883,
+    "path_length_p_value": 0.07862928509712219,
+    "fallacy_direction_changes_mean": 0.18309859154929578,
+    "valid_direction_changes_mean": 0.1,
+    "direction_changes_p_value": 0.5805353262549224
+  },
+  "clause_mean": {
+    "strategy": "clause",
+    "aggregation": "mean",
+    "binary_auc": 0.9572649572649572,
+    "binary_auc_std": 0.0196766913388399,
+    "binary_acc": 0.9375757575757575,
+    "binary_acc_std": 0.01641717143750309,
+    "n_chunks_mean": 2.3482142857142856,
+    "n_chunks_std": 1.3996799470170431
+  },
+  "clause_last": {
+    "strategy": "clause",
+    "aggregation": "last",
+    "binary_auc": 0.9494017094017094,
+    "binary_auc_std": 0.037300226389966974,
+    "binary_acc": 0.9152525252525253,
+    "binary_acc_std": 0.016313678572300955,
+    "n_chunks_mean": 2.3482142857142856,
+    "n_chunks_std": 1.3996799470170431
+  },
+  "clause_maxnorm": {
+    "strategy": "clause",
+    "aggregation": "maxnorm",
+    "binary_auc": 0.913846153846154,
+    "binary_auc_std": 0.07930113325056323,
+    "binary_acc": 0.915050505050505,
+    "binary_acc_std": 0.02644922057940915,
+    "n_chunks_mean": 2.3482142857142856,
+    "n_chunks_std": 1.3996799470170431
+  },
+  "clause_mean_multiclass": {
+    "strategy": "clause",
+    "aggregation": "mean",
+    "multiclass_acc": 0.2512820512820513,
+    "multiclass_f1": 0.23184371184371183
+  },
+  "clause_last_multiclass": {
+    "strategy": "clause",
+    "aggregation": "last",
+    "multiclass_acc": 0.22564102564102564,
+    "multiclass_f1": 0.21053835053835054
+  },
+  "clause_shape": {
+    "strategy": "clause",
+    "fallacy_path_length_mean": 39.06125259399414,
+    "valid_path_length_mean": 32.29743957519531,
+    "path_length_p_value": 0.6539921164512634,
+    "fallacy_direction_changes_mean": 0.9097744360902256,
+    "valid_direction_changes_mean": 0.6071428571428571,
+    "direction_changes_p_value": 0.8723618452972149
+  }
+}

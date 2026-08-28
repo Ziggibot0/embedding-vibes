@@ -25,7 +25,8 @@ EMBED_MODELS = [
     ("qwen3_embedding", "qwen3-embedding:latest", 4),
 ]
 
-N_SESSIONS_PER_CLASS = 50  # 50 fallacy, 50 valid = 100 total per fallacy type
+N_SESSIONS_PER_CLASS = 10  # default: 10 per fallacy type (90 fallacy + 90 valid = 180 total)
+# For full run, use --full flag (50 per type = 450 + 450 = 900)
 N_STEPS = 6  # reasoning steps per session
 FALLACY_TYPES = [
     "circular reasoning",
@@ -94,7 +95,7 @@ TOPICS = [
     "Autonomous vehicle regulation",
 ]
 
-def call_ollama_chat(prompt, model=CHAT_MODEL, timeout=120):
+def call_ollama_chat(prompt, model=CHAT_MODEL, timeout=180):
     """Call Ollama chat API for generation."""
     try:
         resp = requests.post(
@@ -103,12 +104,13 @@ def call_ollama_chat(prompt, model=CHAT_MODEL, timeout=120):
                 "model": model,
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
-                "options": {"temperature": 0.7, "num_predict": 512},
+                "options": {"temperature": 0.7},
             },
             timeout=timeout,
         )
         data = resp.json()
-        return data.get("message", {}).get("content", "")
+        content = data.get("message", {}).get("content", "")
+        return content
     except Exception as e:
         print(f"  Chat error: {e}")
         return ""
@@ -237,8 +239,12 @@ def main():
 
         tasks = [(i, text, model_name) for i, text in enumerate(all_texts)]
 
+        def _embed_task(args):
+            idx, text, model = args
+            return idx, call_ollama_embed(text, model)
+
         with ThreadPoolExecutor(max_workers=concurrency) as pool:
-            futures = {pool.submit(lambda t: (t[0], call_ollama_embed(t[1], t[2])), t): t[0] for t in tasks}
+            futures = {pool.submit(_embed_task, t): t[0] for t in tasks}
             for future in as_completed(futures):
                 idx, emb = future.result()
                 embeddings[idx] = emb
@@ -249,8 +255,13 @@ def main():
                     eta = (len(all_texts) - done) / rate
                     print(f"  {done}/{len(all_texts)} ({rate:.1f}/s, ETA {eta:.0f}s)")
 
-        # Fill None with zeros
-        embeddings = [e if e else [0.0] * 768 for e in embeddings]
+        # Fill None with zeros — detect dimension from first valid embedding
+        dim = 768  # default for nomic
+        for e in embeddings:
+            if e and len(e) > 0:
+                dim = len(e)
+                break
+        embeddings = [e if e else [0.0] * dim for e in embeddings]
         emb_array = np.array(embeddings, dtype=np.float32)
         np.save(cache_path, emb_array)
         print(f"  [{enc_name}] Done: {emb_array.shape}")

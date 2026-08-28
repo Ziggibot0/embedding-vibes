@@ -1,0 +1,40 @@
+{
+  "encoder": "nomic-embed-text",
+  "shape": [
+    2449,
+    768
+  ],
+  "cv_accuracy": 0.5079604357080255,
+  "cv_accuracy_std": 0.009492989745685727,
+  "cv_macro_f1": 0.46473418561870056,
+  "cv_macro_f1_std": 0.01045310249702816,
+  "chance_baseline": 0.07692307692307693,
+  "majority_baseline": 0.1800734993875051,
+  "per_type_auc": {
+    "ad hominem": 0.8744811779485817,
+    "ad populum": 0.9129854895249574,
+    "appeal to emotion": 0.8061748138996785,
+    "circular reasoning": 0.8145305547320142,
+    "equivocation": 0.6960416666666667,
+    "fallacy of credibility": 0.8191082352669081,
+    "fallacy of extension": 0.9214432642680828,
+    "fallacy of logic": 0.7427035712939791,
+    "fallacy of relevance": 0.7911703348497443,
+    "false causality": 0.8976489321760941,
+    "false dilemma": 0.8929502703644374,
+    "faulty generalization": 0.7817955745865721,
+    "intentional": 0.791956375230581
+  },
+  "pca_explained_variance": [
+    0.029957132413983345,
+    0.02612798474729061,
+    0.023780446499586105,
+    0.0209148358553648,
+    0.02007993496954441,
+    0.017165180295705795,
+    0.017046265304088593,
+    0.016012076288461685,
+    0.014627798460423946,
+    0.01411446277052164
+  ]
+}

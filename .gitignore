@@ -1,0 +1,29 @@
+# Dependencies
+venv/
+__pycache__/
+*.pyc
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Data (too large for git)
+data/
+datasets/
+*.parquet
+*.jsonl.gz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Secrets
+.env
+*.key

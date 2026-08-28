@@ -1,0 +1,20 @@
+{
+  "nomic_embed_text": {
+    "raw_delta_auc": 0.9604938271604938,
+    "raw_delta_acc": 0.888888888888889,
+    "learned_delta_auc": 0.8617283950617283,
+    "learned_delta_acc": 0.7555555555555555,
+    "pred_l1": 0.29078754782676697,
+    "mean_l1": 0.7760961651802063,
+    "pred_beats_mean": true
+  },
+  "qwen3_embedding": {
+    "raw_delta_auc": 0.9950617283950617,
+    "raw_delta_acc": 0.9555555555555555,
+    "learned_delta_auc": 0.8641975308641975,
+    "learned_delta_acc": 0.8,
+    "pred_l1": 0.20259006321430206,
+    "mean_l1": 0.7621984481811523,
+    "pred_beats_mean": true
+  }
+}

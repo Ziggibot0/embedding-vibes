@@ -1,0 +1,28 @@
+{
+  "nomic_embed_text": {
+    "static_auc": 0.8172839506172839,
+    "static_acc": 0.7555555555555556,
+    "shape_auc": 0.7382716049382717,
+    "shape_acc": 0.7,
+    "delta_auc": 0.9703703703703702,
+    "delta_acc": 0.9,
+    "combined_auc": 0.8345679012345679,
+    "combined_acc": 0.7777777777777779,
+    "n_sessions": 90,
+    "n_fallacy": 45,
+    "n_valid": 45
+  },
+  "qwen3_embedding": {
+    "static_auc": 0.9555555555555554,
+    "static_acc": 0.888888888888889,
+    "shape_auc": 0.6419753086419753,
+    "shape_acc": 0.5666666666666667,
+    "delta_auc": 1.0,
+    "delta_acc": 0.9555555555555555,
+    "combined_auc": 0.9555555555555554,
+    "combined_acc": 0.8777777777777779,
+    "n_sessions": 90,
+    "n_fallacy": 45,
+    "n_valid": 45
+  }
+}

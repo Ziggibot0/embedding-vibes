@@ -1,0 +1,46 @@
+=== Generating fallacy sessions ===
+  [circular reasoning] 5/5
+  [circular reasoning] done
+  [ad hominem] 5/5
+  [ad hominem] done
+  [ad populum] 5/5
+  [ad populum] done
+  [false causality] 5/5
+  [false causality] done
+  [false dilemma] 5/5
+  [false dilemma] done
+  [equivocation] 5/5
+  [equivocation] done
+  [appeal to emotion] 5/5
+  [appeal to emotion] done
+  [faulty generalization] 5/5
+  [faulty generalization] done
+  [straw man] 5/5
+  [straw man] done
+
+=== Generating 45 valid sessions ===
+  [valid] 10/45
+  [valid] 20/45
+  [valid] 30/45
+  [valid] 40/45
+
+Total sessions: 90
+Total step texts: 540
+
+[nomic_embed_text] Embedding 540 steps...
+  100/540 (0.5/s, ETA 901s)
+  200/540 (0.5/s, ETA 695s)
+  300/540 (0.5/s, ETA 490s)
+  400/540 (0.5/s, ETA 286s)
+  500/540 (0.5/s, ETA 82s)
+  [nomic_embed_text] Done: (540, 768) in 1106.1s
+
+[qwen3_embedding] Embedding 540 steps...
+  100/540 (0.4/s, ETA 1026s)
+  200/540 (0.4/s, ETA 932s)
+  300/540 (0.4/s, ETA 622s)
+  400/540 (0.4/s, ETA 350s)
+  500/540 (0.4/s, ETA 98s)
+  [qwen3_embedding] Done: (540, 4096) in 1314.8s
+
+Generation complete. Run build_mc.py next.

@@ -1,0 +1,114 @@
+{
+  "nomic_embed_text": {
+    "markov_accuracy": 1.0,
+    "markov_f1": 1.0,
+    "markov_auc": 1.0,
+    "static_accuracy": 0.7555555555555556,
+    "static_auc": 0.8172839506172839,
+    "combined_accuracy": 1.0,
+    "combined_auc": 1.0,
+    "per_fallacy_llr": {
+      "circular reasoning": {
+        "mean": 28.039934159278555,
+        "std": 3.195149102630675,
+        "pct_classified_fallacy": 100.0
+      },
+      "ad hominem": {
+        "mean": 25.917077505431752,
+        "std": 2.0495409452123097,
+        "pct_classified_fallacy": 100.0
+      },
+      "ad populum": {
+        "mean": 25.51639748817222,
+        "std": 5.431745070361895,
+        "pct_classified_fallacy": 100.0
+      },
+      "false causality": {
+        "mean": 29.216547713214613,
+        "std": 2.6021619008322454,
+        "pct_classified_fallacy": 100.0
+      },
+      "false dilemma": {
+        "mean": 23.87212550054442,
+        "std": 6.602757434493807,
+        "pct_classified_fallacy": 100.0
+      },
+      "equivocation": {
+        "mean": 29.21757836408684,
+        "std": 2.147958717991817,
+        "pct_classified_fallacy": 100.0
+      },
+      "appeal to emotion": {
+        "mean": 24.7378037036368,
+        "std": 5.366171169869171,
+        "pct_classified_fallacy": 100.0
+      },
+      "faulty generalization": {
+        "mean": 26.776494330582523,
+        "std": 3.9300932911543693,
+        "pct_classified_fallacy": 100.0
+      },
+      "straw man": {
+        "mean": 27.796710926042028,
+        "std": 4.792399143847222,
+        "pct_classified_fallacy": 100.0
+      }
+    }
+  },
+  "qwen3_embedding": {
+    "markov_accuracy": 1.0,
+    "markov_f1": 1.0,
+    "markov_auc": 1.0,
+    "static_accuracy": 0.8777777777777779,
+    "static_auc": 0.9555555555555554,
+    "combined_accuracy": 1.0,
+    "combined_auc": 1.0,
+    "per_fallacy_llr": {
+      "circular reasoning": {
+        "mean": 22.671442354555538,
+        "std": 1.28753670793178,
+        "pct_classified_fallacy": 100.0
+      },
+      "ad hominem": {
+        "mean": 25.860355211613218,
+        "std": 4.331101289308995,
+        "pct_classified_fallacy": 100.0
+      },
+      "ad populum": {
+        "mean": 27.71230975010571,
+        "std": 3.3349940322940967,
+        "pct_classified_fallacy": 100.0
+      },
+      "false causality": {
+        "mean": 27.217188001536908,
+        "std": 2.480213306580122,
+        "pct_classified_fallacy": 100.0
+      },
+      "false dilemma": {
+        "mean": 26.012831063543324,
+        "std": 2.6541446457965434,
+        "pct_classified_fallacy": 100.0
+      },
+      "equivocation": {
+        "mean": 26.297400512477775,
+        "std": 3.1144034167744787,
+        "pct_classified_fallacy": 100.0
+      },
+      "appeal to emotion": {
+        "mean": 24.670569539161992,
+        "std": 3.3874934844369093,
+        "pct_classified_fallacy": 100.0
+      },
+      "faulty generalization": {
+        "mean": 23.95829948822817,
+        "std": 3.70087012541697,
+        "pct_classified_fallacy": 100.0
+      },
+      "straw man": {
+        "mean": 27.14002430875006,
+        "std": 4.6071797283596325,
+        "pct_classified_fallacy": 100.0
+      }
+    }
+  }
+}

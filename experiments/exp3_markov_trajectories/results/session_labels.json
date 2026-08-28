@@ -1,0 +1,542 @@
+[
+  {
+    "label": "fallacy",
+    "fallacy_type": "circular reasoning",
+    "topic": "Universal basic income",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "circular reasoning",
+    "topic": "Mandatory vaccination",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "circular reasoning",
+    "topic": "Social media regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "circular reasoning",
+    "topic": "Four-day work week",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "circular reasoning",
+    "topic": "Space colonization funding",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad hominem",
+    "topic": "Universal basic income",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad hominem",
+    "topic": "Mandatory vaccination",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad hominem",
+    "topic": "Social media regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad hominem",
+    "topic": "Four-day work week",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad hominem",
+    "topic": "Space colonization funding",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad populum",
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad populum",
+    "topic": "Remote work policies",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad populum",
+    "topic": "AI in criminal sentencing",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad populum",
+    "topic": "Genetic engineering in agriculture",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "ad populum",
+    "topic": "Free college tuition",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false causality",
+    "topic": "Cryptocurrency regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false causality",
+    "topic": "Immigration reform",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false causality",
+    "topic": "Autonomous vehicle regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false causality",
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false causality",
+    "topic": "Remote work policies",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false dilemma",
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false dilemma",
+    "topic": "Remote work policies",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false dilemma",
+    "topic": "AI in criminal sentencing",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false dilemma",
+    "topic": "Genetic engineering in agriculture",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "false dilemma",
+    "topic": "Free college tuition",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "equivocation",
+    "topic": "Space colonization funding",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "equivocation",
+    "topic": "Gun control legislation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "equivocation",
+    "topic": "Universal healthcare",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "equivocation",
+    "topic": "Carbon taxation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "equivocation",
+    "topic": "Nuclear energy expansion",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "appeal to emotion",
+    "topic": "Immigration reform",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "appeal to emotion",
+    "topic": "Autonomous vehicle regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "appeal to emotion",
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "appeal to emotion",
+    "topic": "Remote work policies",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "appeal to emotion",
+    "topic": "AI in criminal sentencing",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "faulty generalization",
+    "topic": "Universal basic income",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "faulty generalization",
+    "topic": "Mandatory vaccination",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "faulty generalization",
+    "topic": "Social media regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "faulty generalization",
+    "topic": "Four-day work week",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "faulty generalization",
+    "topic": "Space colonization funding",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "straw man",
+    "topic": "Carbon taxation",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "straw man",
+    "topic": "Nuclear energy expansion",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "straw man",
+    "topic": "Healthcare privatization",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "straw man",
+    "topic": "Rent control in cities",
+    "n_steps": 6
+  },
+  {
+    "label": "fallacy",
+    "fallacy_type": "straw man",
+    "topic": "Cryptocurrency regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Universal basic income",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Carbon taxation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Mandatory vaccination",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Nuclear energy expansion",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Remote work policies",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Social media regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Healthcare privatization",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "AI in criminal sentencing",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Four-day work week",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Rent control in cities",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Genetic engineering in agriculture",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Space colonization funding",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Cryptocurrency regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Free college tuition",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Gun control legislation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Immigration reform",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Animal testing bans",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Universal healthcare",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Autonomous vehicle regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Universal basic income",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Carbon taxation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Mandatory vaccination",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Nuclear energy expansion",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Remote work policies",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Social media regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Healthcare privatization",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "AI in criminal sentencing",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Four-day work week",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Rent control in cities",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Genetic engineering in agriculture",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Space colonization funding",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Cryptocurrency regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Free college tuition",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Gun control legislation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Immigration reform",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Animal testing bans",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Universal healthcare",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Autonomous vehicle regulation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Universal basic income",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Carbon taxation",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "School voucher programs",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Mandatory vaccination",
+    "n_steps": 6
+  },
+  {
+    "label": "valid",
+    "fallacy_type": null,
+    "topic": "Nuclear energy expansion",
+    "n_steps": 6
+  }
+]

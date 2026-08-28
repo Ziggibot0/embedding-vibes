@@ -1,0 +1,22 @@
+[1] generating fallacy sessions...
+  0%|          | 0/80 [00:00<?, ?it/s]  0%|          | 0/80 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\skell\Desktop\embedding-vibes\experiments\exp3_markov_trajectories\gen_bigger.py", line 210, in <module>
+    asyncio.run(main())
+  File "C:\Users\skell\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\skell\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skell\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\skell\Desktop\embedding-vibes\experiments\exp3_markov_trajectories\gen_bigger.py", line 204, in main
+    sessions, all_texts = await build_sessions()
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skell\Desktop\embedding-vibes\experiments\exp3_markov_trajectories\gen_bigger.py", line 177, in build_sessions
+    steps, full = completed.result()
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'coroutine' object has no attribute 'result'
+sys:1: RuntimeWarning: coroutine 'as_completed.<locals>._wait_for_one' was never awaited

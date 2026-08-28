@@ -7,7 +7,7 @@ whether trajectory adds signal beyond single-embedding classification.
 Key metric: can transition log-likelihood under T_fallacy vs T_valid
 classify sessions better than a static probe on the final step embedding?
 """
-import os, json, numpy as np
+import os, sys, json, numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedKFold, cross_val_score
@@ -284,20 +284,98 @@ def run_markov_cv(enc_name):
     }
 
 
+def run_markov_loo(enc_name):
+    """Leave-one-out Markov classifier.
+
+    The canonical anti-overfit gate for Markov trajectory classification:
+    build each trajectory's (T_fallacy, T_valid) using the OTHER trajectories,
+    then score the held-out one. This removes in-sample leakage (the original
+    study scored each fallacy session against a T_fallacy it helped construct,
+    which trivially yields AUC=1.0).
+    """
+    states = np.load(os.path.join(RESULTS_DIR, f"states_{enc_name}.npy"))
+    meta_path = os.path.join(RESULTS_DIR, f"trajectory_meta_{enc_name}.json")
+    with open(meta_path) as f:
+        meta = json.load(f)
+    labels_path = os.path.join(RESULTS_DIR, "studyA_session_labels.json"
+                              if os.path.exists(os.path.join(RESULTS_DIR, "studyA_session_labels.json"))
+                              else os.path.join(RESULTS_DIR, "session_labels.json"))
+    with open(labels_path) as f:
+        session_labels = json.load(f)
+
+    # States per session (skip un-observed states)
+    sessions = {}
+    for mi, m in enumerate(meta):
+        si = m["session_idx"]
+        if states[mi] >= 0:
+            sessions.setdefault(si, []).append(int(states[mi]))
+
+    sessions = {si: tr for si, tr in sessions.items() if si < len(session_labels) and len(tr) >= 3}
+    sess_keys = sorted(sessions)
+    y = np.array([1 if session_labels[si]["label"] == "fallacy" else 0 for si in sess_keys], dtype=int)
+
+    def build_T(trajs, k):
+        alpha = 1e-3
+        T = np.full((k, k), alpha, dtype=float)
+        for tr in trajs:
+            for t in range(len(tr) - 1):
+                T[tr[t], tr[t+1]] += 1
+        rs = T.sum(1, keepdims=True)
+        return T / rs
+
+    N = len(sess_keys)
+    K = 200
+
+    llrs = np.zeros(N)
+    for idx, si in enumerate(sess_keys):
+        tr = sessions[si]
+        # Leave-one-out per class: drop THIS session from its own bag.
+        bag_f = [np.array(v) for s2, v in sessions.items()
+                 if y[list(sess_keys).index(s2)] == 1 and s2 != si]
+        bag_v = [np.array(v) for s2, v in sessions.items()
+                 if y[list(sess_keys).index(s2)] == 0]
+        T_f = build_T(bag_f, K) if bag_f else np.full((K, K), 1e-6, dtype=float)
+        T_v = build_T(bag_v, K) if bag_v else np.full((K, K), 1e-6, dtype=float)
+        # Compare likelihoods of THIS held-out traj against both bag matrices.
+        def LL(traj, T):
+            out = 0.0
+            for t in range(len(traj) - 1):
+                p = T[traj[t], traj[t+1]]
+                out += (np.log(p) if p > 0 else -20.0)
+            return out
+        llrs[idx] = LL(tr, T_f) - LL(tr, T_v)
+
+    auc = roc_auc_score(y, llrs) if len(set(y)) > 1 else float('nan')
+    preds = (llrs > 0).astype(int)
+    acc = accuracy_score(y, preds)
+    print(f"  LOO Markov: AUC={auc:.3f}  Acc={acc:.3f}  "
+          f"fallacy-mean-LLR={np.mean(llrs[y==1]):.2f} valid-mean-LLR={np.mean(llrs[y==0]):.2f}")
+    return {"loo_auc": float(auc), "loo_accuracy": float(acc),
+            "loo_fallacy_llr_mean": float(np.mean(llrs[y==1])),
+            "loo_valid_llr_mean": float(np.mean(llrs[y==0]))}
+
+
 def main():
     all_results = {}
+    loo_flag = "--loo" in sys.argv
+
     for enc_name in ENCODERS:
         try:
-            results = run_markov_cv(enc_name)
-            all_results[enc_name] = results
+            if loo_flag:
+                all_results[enc_name] = run_markov_loo(enc_name)
+            else:
+                all_results[enc_name] = run_markov_cv(enc_name)
         except FileNotFoundError as e:
             print(f"\n  [{enc_name}] Files not found: {e}")
-            print(f"  Run simulate.py and build_mc.py first.")
+            print(f"  Run gen_bigger.py / build_mc.py first.")
 
-    with open(os.path.join(RESULTS_DIR, "predict_results.json"), "w") as f:
+    out = "predict_results.json" if not loo_flag else "predict_results_loo.json"
+    with open(os.path.join(RESULTS_DIR, out), "w") as f:
         json.dump(all_results, f, indent=2)
 
-    print(f"\nResults saved to {RESULTS_DIR}/predict_results.json")
+    print(f"\nResults saved to {RESULTS_DIR}/{ out}")
+    if loo_flag:
+        print("Leave-one-out AUC is the anti-overfit gate: a true generalization number.")
 
 
 if __name__ == "__main__":

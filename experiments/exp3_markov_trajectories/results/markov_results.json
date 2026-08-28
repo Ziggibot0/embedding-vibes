@@ -1,0 +1,22 @@
+{
+  "nomic_embed_text": {
+    "encoder": "nomic_embed_text",
+    "n_fallacy_trajs": 45,
+    "n_valid_trajs": 45,
+    "n_fallacy_types": 9,
+    "mean_H_fallacy": 2.702172021693424,
+    "mean_H_valid": 3.0368870565590145,
+    "H_ratio": 0.8897835090235974,
+    "mean_kl_fv": 3.958357624505128
+  },
+  "qwen3_embedding": {
+    "encoder": "qwen3_embedding",
+    "n_fallacy_trajs": 45,
+    "n_valid_trajs": 45,
+    "n_fallacy_types": 9,
+    "mean_H_fallacy": 2.9098883697075455,
+    "mean_H_valid": 3.052052705456853,
+    "H_ratio": 0.9534200915026376,
+    "mean_kl_fv": 3.851429235761366
+  }
+}

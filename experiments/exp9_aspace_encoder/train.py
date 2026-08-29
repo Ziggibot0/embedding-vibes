@@ -133,13 +133,18 @@ def main():
 
     device = args.device
     if device is None:
-        try:
-            import torch_directml
-            device = torch_directml.device()
-            log.info("using torch_directml (iGPU)")
-        except Exception:
-            device = "cuda" if torch.cuda.is_available() else "cpu"
-            log.info(f"using {device}")
+        # ROCm on Windows exposes the AMD iGPU as a CUDA device (torch 2.9+rocm)
+        if torch.cuda.is_available():
+            device = "cuda"
+            log.info(f"using cuda/rocm device: {torch.cuda.get_device_name(0)}")
+        else:
+            try:
+                import torch_directml
+                device = torch_directml.device()
+                log.info("using torch_directml (iGPU)")
+            except Exception:
+                device = "cpu"
+                log.info("using cpu")
 
     sessions_all = load_sessions()
     tok = get_tokenizer(sessions_all)
@@ -203,19 +208,23 @@ def main():
             l_mlm = F.cross_entropy(model.mlm_logits(states).view(-1, vocab),
                                     labels.view(-1), ignore_index=-100)
 
-            # ---- Barlow Twins: same step, two renderings
-            r1, r2 = rng.choice(render_names, size=2, replace=False)
-            steps1, steps2 = [], []
-            for i in b:
-                j = rng.randint(0, len(sess[i]["texts"]))
-                txt = sess[i]["texts"][j]
-                steps1.append(RENDERERS[r1](txt))
-                steps2.append(RENDERERS[r2](txt))
-            X1 = pad_to_batch(encode_fresh(steps1)).to(device)
-            X2 = pad_to_batch(encode_fresh(steps2)).to(device)
-            z1, _ = model(X1, (X1 == PAD_ID))
-            z2, _ = model(X2, (X2 == PAD_ID))
-            l_bt = barlow_twins(z1, z2)
+            # ---- Barlow Twins: same step, ALL rendering pairs (attempt #2 fix:
+            # one pair per batch left the space directionally collapsed; now
+            # every format pair in C(5,2)=10 is pulled together each step, and
+            # z is L2-normalized before the loss so direction must carry info)
+            chosen = {i: rng.randint(0, len(sess[i]["texts"])) for i in b}
+            pair_terms = []
+            for r1 in range(len(render_names)):
+                for r2 in range(r1 + 1, len(render_names)):
+                    steps1 = [RENDERERS[render_names[r1]](sess[i]["texts"][chosen[i]]) for i in b]
+                    steps2 = [RENDERERS[render_names[r2]](sess[i]["texts"][chosen[i]]) for i in b]
+                    X1 = pad_to_batch(encode_fresh(steps1)).to(device)
+                    X2 = pad_to_batch(encode_fresh(steps2)).to(device)
+                    z1, _ = model(X1, (X1 == PAD_ID))
+                    z2, _ = model(X2, (X2 == PAD_ID))
+                    pair_terms.append(barlow_twins(F.normalize(z1, dim=-1),
+                                                   F.normalize(z2, dim=-1)))
+            l_bt = torch.stack(pair_terms).mean()
 
             # ---- prefix consistency + (Run B) outcome, ONE batched forward
             # (was 8 separate forwards — the CPU bottleneck)

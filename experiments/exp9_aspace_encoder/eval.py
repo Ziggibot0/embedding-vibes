@@ -292,6 +292,30 @@ def main():
                             float(np.percentile(aucs, 97.5))]}
     res["loho_bootstrap"] = boot
 
+    # (e) bootstrap 95% CI on LOBO AUCs (attempt #2 addition — the attempt #1
+    # bright spot was unbootstrapped; same test-set resampling method)
+    boot_lobo = {}
+    rng4 = np.random.RandomState(SEED)
+    ba2 = np.array(bench)
+    for g in sorted(set(ba2)):
+        te = np.where(ba2 == g)[0]; tr = np.where(ba2 != g)[0]
+        if len(te) < 150 or len(set(y[tr])) < 2 or len(set(y[te])) < 2:
+            continue
+        sc = StandardScaler().fit(Z[tr])
+        clf = LogisticRegression(max_iter=3000, C=1.0).fit(sc.transform(Z[tr]), y[tr])
+        probs = clf.predict_proba(sc.transform(Z[te]))[:, 1]
+        yt = y[te]
+        aucs = []
+        for _ in range(300):
+            bs = rng4.randint(0, len(yt), len(yt))
+            if len(set(yt[bs])) < 2:
+                continue
+            aucs.append(roc_auc_score(yt[bs], probs[bs]))
+        boot_lobo[g] = {"auc": float(roc_auc_score(yt, probs)),
+                        "ci95": [float(np.percentile(aucs, 2.5)),
+                                 float(np.percentile(aucs, 97.5))]}
+    res["lobo_bootstrap"] = boot_lobo
+
     out = os.path.join(RESULTS, f"eval_run{args.run}.json")
     json.dump(res, open(out, "w"), indent=2, default=str)
     log.info(f"gates: {json.dumps(gates)}")

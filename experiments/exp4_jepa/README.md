@@ -1,5 +1,11 @@
 # JEPA Training Architecture — Embedding Vibes
 
+> **STATUS (2026-08-28):** This document is the ORIGINAL design spec (frozen base encoder + learned head). The current direction has moved:
+> - **exp5/exp5b** validated the core mechanism differently: raw relative-deltas (translation-invariant velocities) beat static features, and the dimensional elbow is ≤ 8 dims.
+> - **exp6** (joint encoder + predictor on frozen embeddings) showed the learned 64-dim Barlow-Twins projection LOSES signal vs raw deltas.
+> - **exp6b** (`exp6_joint_jepa/train_from_scratch.py`) is the current build: a FROM-SCRATCH text encoder trained jointly with the JEPA predictor (MLM + Barlow Twins + JEPA), on multi-harness data (22K Exgentic+AgentTrove sessions), iGPU via torch-directml.
+> - This spec remains as background/reference; see DESIGN.md for the current pilot architecture.
+
 ## Overview
 
 A JEPA (Joint Embedding Predictive Architecture) that learns to predict future embedding states of reasoning trajectories. The encoder normalizes surface variation (Barlow Twins), the predictor forecasts where reasoning is heading (z_{t+k}), and the whole system runs on top of a frozen base encoder with a learned lightweight head.

@@ -69,4 +69,18 @@ Before building anything: embed 100 CoT traces with known fallacies + 100 valid 
 
 ## Status
 
-Pre-experiment. Gate: does embedding geometry distinguish fallacy from valid reasoning?
+**Pilot architecture validated in principle (exp5), being tested on real data (exp7).**
+
+| Exp | What | Result |
+|---|---|---|
+| 1 | Linear probe on static embeddings (fallacy types) | DONE — signal real, nomic 50.8% / qwen3 65.1% multiclass, binary AUC 0.987 |
+| 2 | Chunking ablation | NEGATIVE — chunking hurts; signal is in the transitions |
+| 3 | Markov chains on trajectories | Done — AUC 1.0 in-sample, but needs leave-one-out (in-sample flaw) |
+| 4 | JEPA architecture spec | Design only (superseded by exp6 from-scratch build) |
+| 5 | **Differential shape features vs static** | **DONE — delta beats static: nomic 0.970 vs 0.817, qwen3 1.000 vs 0.956** |
+| 5b | Dimension + early-detection curves | DONE — elbow ≤ 8 dims (!); AUC 0.99 from 3 of 6 visible steps |
+| 6 | Joint encoder + JEPA (frozen-emb projector) | Predictor works (beats mean 62-73%); learned 64-dim loses signal |
+| 6b | From-scratch text encoder + JEPA (joint MLM+BT+JEPA) | Built, iGPU-trained; paused pending exp7 |
+| 7 | **Delta vs static on 2000 REAL Exgentic sessions (success/failure)** | **RUNNING — the decisive gate** |
+
+See `docs/why_jepa.md` for the JEPA argument, `experiments/exp5b_curves/RESULTS.md` for the design curves, `DESIGN.md` for the pilot architecture.

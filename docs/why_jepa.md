@@ -27,7 +27,17 @@ The encoder is TRAINED to normalize surface variation and expose reasoning struc
 |---|---|---|---|---|
 | Exp1 | Frozen (nomic/qwen3) | None (whole statement) | AUC 0.87-0.99 | Signal is holistic, detects surface patterns |
 | Exp2 | Frozen (nomic) | Sentence/connective/clause | AUC 0.91-0.97 (no improvement) | Chunking loses context, surface noise dominates |
-|| Exp4 | JEPA-trained (Barlow Twins) | Step-level | Predicted: should exceed frozen | Needs training data + training compute |
+| Exp5 | Frozen (nomic/qwen3) | Raw relative-deltas | AUC 0.97-1.00 (beats static by 0.04-0.15) | Stylistic-vs-logical not yet controlled |
+| Exp5b | Frozen (nomic/qwen3) | Deltas, PCA 8-64d | Elbow at ≤8 dims; early detection from 3/6 steps | Same caveat; small N |
+| Exp6 | Learned 64-dim (Barlow Twins) on frozen | Learned-delta | AUC 0.862/0.864 — LOSES signal vs raw | BT decorrelation may discard low-variance task info |
+| Exp7 | Frozen (nomic) | Deltas on 2000 REAL sessions | RUNNING — decisive gate on success/failure labels | — |
+| Exp6b | From-scratch text encoder (MLM+BT+JEPA joint) | Learned, from token ids | Built, iGPU-trained; paused pending exp7 | Needs scale; expensive |
+
+Key updated finding (exp5b): the dimensional elbow is at or below 8 dims for
+raw-delta PCA — extreme compression preserves the shape signal. exp6's learned
+64-dim encoder losing signal was NOT a dimensionality problem; Barlow Twins
+decorrelation likely suppresses low-variance directions that carry task signal.
+Any learned encoder must be benchmarked against raw deltas + tiny PCA.
 
 ## The reviewer answer
 

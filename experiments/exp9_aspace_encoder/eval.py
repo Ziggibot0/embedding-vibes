@@ -34,7 +34,12 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="debug: cap sessions (0=all)")
     args = ap.parse_args()
 
-    sessions_all = load_sessions()
+    # EVAL always uses exp8's 3k labeled sessions (the test set),
+    # NOT the big training corpus.
+    EXP8 = os.path.join(HERE, "..", "exp8_harness_disjoint", "results")
+    eval_sessions_path = os.path.join(EXP8, "sessions_meta.jsonl")
+    sessions_all = [json.loads(l) for l in open(eval_sessions_path, encoding="utf-8")]
+    log.info(f"loaded {len(sessions_all)} eval sessions from exp8")
     if args.device is None:
         args.device = "cuda" if torch.cuda.is_available() else "cpu"
         log.info(f"eval device: {args.device}")

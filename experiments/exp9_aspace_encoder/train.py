@@ -111,7 +111,8 @@ class ASpaceEncoder(nn.Module):
 
 
 def barlow_twins(z1, z2, lambd=BT_LAMBD):
-    """Cross-correlation -> identity; same batch, two renderings."""
+    """Cross-correlation -> identity; same batch, two renderings.
+    Standard BT: normalize z by batch mean/std, then push cross-corr to I."""
     N = z1.shape[0]
     z1n = (z1 - z1.mean(0)) / (z1.std(0) + 1e-6)
     z2n = (z2 - z2.mean(0)) / (z2.std(0) + 1e-6)
@@ -123,6 +124,14 @@ def barlow_twins(z1, z2, lambd=BT_LAMBD):
     return on_diag + lambd * off_diag
 
 
+def vicreg_var_loss(z, gamma=1.0):
+    """VICReg variance term: penalize dims whose std < gamma.
+    This is the anti-collapse regularizer. A constant output has zero
+    std and pays the maximum penalty. Applied per-branch."""
+    std = z.std(0)  # (proj_dim,)
+    return torch.relu(gamma - std).pow(2).mean()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", choices=["A", "B"], required=True)
@@ -131,6 +140,8 @@ def main():
     ap.add_argument("--steps-per-epoch", type=int, default=2000)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--lambda-bt", type=float, default=1.0)
+    ap.add_argument("--lambda-vic", type=float, default=1.0,
+                    help="VICReg variance penalty weight (anti-collapse)")
     ap.add_argument("--lambda-prefix", type=float, default=1.0)
     ap.add_argument("--device", default=None)
     args = ap.parse_args()
@@ -228,12 +239,15 @@ def main():
             l_mlm = F.cross_entropy(model.mlm_logits(states).view(-1, vocab),
                                     labels.view(-1), ignore_index=-100)
 
-            # ---- Barlow Twins: same step, ALL rendering pairs (attempt #2 fix:
-            # one pair per batch left the space directionally collapsed; now
-            # every format pair in C(5,2)=10 is pulled together each step, and
-            # z is L2-normalized before the loss so direction must carry info)
+            # ---- Barlow Twins + VICReg variance (anti-collapse):
+            # attempt #2 collapsed because BT can be satisfied by mapping
+            # everything to the same point. VICReg's variance hinge explicitly
+            # penalizes any dim whose std < gamma, making collapse impossible.
+            # z is NOT L2-normalized (attempt #2's normalization killed the
+            # magnitude info that the variance term needs).
             chosen = {i: rng.randint(0, len(sess[i]["texts"])) for i in b}
             pair_terms = []
+            vic_terms = []
             for r1 in range(len(render_names)):
                 for r2 in range(r1 + 1, len(render_names)):
                     steps1 = [RENDERERS[render_names[r1]](sess[i]["texts"][chosen[i]]) for i in b]
@@ -242,9 +256,10 @@ def main():
                     X2 = pad_to_batch(encode_fresh(steps2)).to(device)
                     z1, _ = model(X1, (X1 == PAD_ID))
                     z2, _ = model(X2, (X2 == PAD_ID))
-                    pair_terms.append(barlow_twins(F.normalize(z1, dim=-1),
-                                                   F.normalize(z2, dim=-1)))
+                    pair_terms.append(barlow_twins(z1, z2))
+                    vic_terms.append(vicreg_var_loss(z1) + vicreg_var_loss(z2))
             l_bt = torch.stack(pair_terms).mean()
+            l_vic = torch.stack(vic_terms).mean()
 
             # ---- prefix consistency + (Run B) outcome, ONE batched forward
             # Uses labeled sessions (b_lab) — prefix needs no labels but we
@@ -275,7 +290,7 @@ def main():
                 l_out = (torch.stack(out_terms).mean() if out_terms
                          else torch.tensor(0.0, device=device))
 
-            loss = l_mlm + args.lambda_bt * l_bt + args.lambda_prefix * l_pfx + l_out
+            loss = l_mlm + args.lambda_bt * l_bt + args.lambda_vic * l_vic + args.lambda_prefix * l_pfx + l_out
             opt.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(params, 1.0)
@@ -284,7 +299,8 @@ def main():
 
             if it % 100 == 0:
                 log.info(f"ep{epoch+1} it{it:4d} mlm={float(l_mlm):.3f} "
-                         f"bt={float(l_bt):.3f} pfx={float(l_pfx):.3f} "
+                         f"bt={float(l_bt):.3f} vic={float(l_vic):.3f} "
+                         f"pfx={float(l_pfx):.3f} "
                          f"out={float(l_out):.3f} ({time.time()-t0:.0f}s)")
 
         ckpt = os.path.join(RESULTS, f"ckpt_run{args.run}.pt")

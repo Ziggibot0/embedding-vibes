@@ -147,6 +147,9 @@ def main():
         return aucs.mean(), accs.mean()
 
     print(f"\n  Success/failure separation (5-fold CV):")
+    # LENGTH-ONLY CONTROL (mandatory: prior work showed length leakage AUC 0.66)
+    lens = np.array([[embs.shape[0]] for embs in sess_embs])
+    len_auc, len_acc = cv_auc(lens, "Length-only control (n steps)")
     static_auc, static_acc = cv_auc(X_static, "Static (centroid+final)")
     delta_auc, delta_acc = cv_auc(X_delta, "Delta (velocities, PCA50)")
 
@@ -156,23 +159,25 @@ def main():
 
     print(f"\n  SUMMARY:")
     print(f"  {'Method':<40} {'AUC':<10} {'Acc':<10}")
+    print(f"  {'Length-only':<40} {len_auc:<10.3f} {len_acc:<10.3f}")
     print(f"  {'Static':<40} {static_auc:<10.3f} {static_acc:<10.3f}")
     print(f"  {'Delta':<40} {delta_auc:<10.3f} {delta_acc:<10.3f}")
     print(f"  {'Static+Delta':<40} {comb_auc:<10.3f} {comb_acc:<10.3f}")
 
     print(f"\n  VERDICT:")
-    if delta_auc > static_auc + 0.05:
-        v = "DELTA BEATS STATIC on real data — pilot's core mechanism has legs"
-    elif delta_auc > static_auc - 0.05:
-        v = "DELTA ~= STATIC on real data — temporal shape is redundant"
+    if delta_auc > max(static_auc, len_auc) + 0.05:
+        v = "DELTA BEATS STATIC (and length control) on real data — pilot has legs"
+    elif delta_auc > max(static_auc, len_auc) - 0.05:
+        v = "DELTA ~= STATIC/LENGTH on real data — temporal shape is redundant"
     else:
         v = "DELTA WORSE on real data — rethink"
-    print(f"  static={static_auc:.3f} delta={delta_auc:.3f} -> {v}")
+    print(f"  static={static_auc:.3f} delta={delta_auc:.3f} length={len_auc:.3f} -> {v}")
 
     out = os.path.join(OUT_DIR, "exp7_results.json")
     with open(out, "w") as f:
         json.dump({"static_auc": float(static_auc), "static_acc": float(static_acc),
                    "delta_auc": float(delta_auc), "delta_acc": float(delta_acc),
+                   "length_auc": float(len_auc), "length_acc": float(len_acc),
                    "combined_auc": float(comb_auc), "combined_acc": float(comb_acc),
                    "n_sessions": len(sess_embs), "n_success": int(y.sum()),
                    "n_failure": int((y == 0).sum())}, f, indent=2)

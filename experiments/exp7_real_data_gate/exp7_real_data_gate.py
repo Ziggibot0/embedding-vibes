@@ -108,17 +108,23 @@ def main():
     print(f"Embedded {len(cache)}/{len(all_texts)} unique texts in {time.time()-t0:.0f}s")
     np.save(cache_path, np.array(cache, dtype=object), allow_pickle=True)
 
-    # Build per-session step embeddings
+    # Build per-session step embeddings (defensive: skip malformed cache rows)
+    # EMB_LEN from the MODE of value lengths — one empty entry exists (empty text key)
+    from collections import Counter as _Counter
+    _lens = _Counter(len(v) for v in cache.values() if isinstance(v, (list, tuple)))
+    EMB_LEN = _lens.most_common(1)[0][0] if _lens else 768
     sess_embs = []
     y = []
     for s in sessions:
         embs = []
         for step in s["steps"]:
             if step in cache:
-                embs.append(cache[step])
+                v = cache[step]
+                if isinstance(v, (list, tuple)) and len(v) == EMB_LEN:
+                    embs.append(v)
         if len(embs) < 2:
             continue
-        sess_embs.append(np.array(embs))
+        sess_embs.append(np.array(embs, dtype=np.float32))
         y.append(1 if s["success"] else 0)
     y = np.array(y)
     print(f"Valid sessions: {len(sess_embs)} ({y.sum()} success)")
@@ -131,8 +137,14 @@ def main():
         X_static.append(np.concatenate([centroid, final]))
     X_static = np.array(X_static)
 
-    # ---- Delta features (concatenated velocities, PCA) ----
-    X_delta_raw = np.array([np.diff(embs, axis=0).reshape(-1) for embs in sess_embs])
+    # ---- Delta features (concatenated velocities) ----
+    # Sessions have VARIABLE length -> pad delta sequences to the max length.
+    max_deltas = max(embs.shape[0] - 1 for embs in sess_embs)
+    D = sess_embs[0].shape[1]
+    X_delta_raw = np.array([
+        np.concatenate([np.diff(embs, axis=0).reshape(-1),
+                        np.zeros(((max_deltas - (embs.shape[0] - 1)) * D,))])
+        for embs in sess_embs])
     pca = PCA(n_components=min(50, X_delta_raw.shape[1], X_delta_raw.shape[0]))
     X_delta = pca.fit_transform(X_delta_raw)
 

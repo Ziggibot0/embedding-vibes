@@ -81,6 +81,6 @@ Before building anything: embed 100 CoT traces with known fallacies + 100 valid 
 | 5b | Dimension + early-detection curves | DONE — elbow ≤ 8 dims (!); AUC 0.99 from 3 of 6 visible steps |
 | 6 | Joint encoder + JEPA (frozen-emb projector) | Predictor works (beats mean 62-73%); learned 64-dim loses signal |
 | 6b | From-scratch text encoder + JEPA (joint MLM+BT+JEPA) | Built, iGPU-trained; paused pending exp7 |
-| 7 | **Delta vs static on 2000 REAL Exgentic sessions (success/failure)** | **RUNNING — the decisive gate** |
+| 7 | **Delta vs static on 2000 REAL Exgentic sessions (success/failure)** | **DONE — NEGATIVE for delta: static 0.901 vs delta 0.655 (padded) / 0.808 (mean-velocity). Centroid 0.898-0.901 = strongest, cheapest result. Length control 0.561 (clean). Encoder plans ON HOLD.** |
 
 See `docs/why_jepa.md` for the JEPA argument, `experiments/exp5b_curves/RESULTS.md` for the design curves, `DESIGN.md` for the pilot architecture.

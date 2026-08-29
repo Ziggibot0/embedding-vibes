@@ -1,0 +1,88 @@
+{
+  "run": "B",
+  "n": 3000,
+  "per_dim_var": [
+    6.784405708312988,
+    0.4752158224582672,
+    4.279741287231445,
+    2.700319290161133,
+    3.4569332599639893,
+    2.3271524906158447,
+    0.21935053169727325,
+    0.28520527482032776
+  ],
+  "in_format_auc": 0.9862710685362204,
+  "loho": {
+    "claude_code": 0.9940144961421558,
+    "openai_solo": 0.9770872298896942,
+    "smolagents_code": 0.9939840286309493,
+    "tool_calling": 0.9752640845070423
+  },
+  "loho_mean": 0.9850874597924604,
+  "lobo": {
+    "appworld": 0.8531129219466083,
+    "browsecompplus": 0.9931344095773627,
+    "swebench": 0.9852172518839185
+  },
+  "lobo_mean": 0.9438215278026298,
+  "gates": {
+    "G1_signal_exists": true,
+    "G4_no_collapse": true,
+    "G2_transfers_like_lexical": true,
+    "G3_dream": true
+  },
+  "cross_format_step": {
+    "n_steps": 300,
+    "formats": [
+      "chat",
+      "xml",
+      "json",
+      "otel",
+      "terse"
+    ],
+    "within_step_mean_cos": 0.9782792925834656,
+    "between_step_mean_cos": 0.06431713700294495,
+    "invariance_margin": 0.9139621555805206
+  },
+  "cross_format_session": {
+    "n_sessions": 120,
+    "within_session_mean_cos": 0.9935188889503479,
+    "between_session_mean_cos": 0.10920356214046478
+  },
+  "tfidf_pca8_loho": {
+    "claude_code": 0.7698698464655912,
+    "openai_solo": 0.7792868232216422,
+    "smolagents_code": 0.8463223118423161,
+    "tool_calling": 0.6886553697183099
+  },
+  "loho_bootstrap": {
+    "claude_code": {
+      "auc": 0.9940144961421558,
+      "ci95": [
+        0.9898362139712727,
+        0.9971978488782738
+      ]
+    },
+    "openai_solo": {
+      "auc": 0.9770872298896942,
+      "ci95": [
+        0.968435823691816,
+        0.9840942992103748
+      ]
+    },
+    "smolagents_code": {
+      "auc": 0.9939840286309493,
+      "ci95": [
+        0.9902604281728314,
+        0.9965995019839229
+      ]
+    },
+    "tool_calling": {
+      "auc": 0.9752640845070423,
+      "ci95": [
+        0.9645693634808556,
+        0.9853234882459854
+      ]
+    }
+  }
+}

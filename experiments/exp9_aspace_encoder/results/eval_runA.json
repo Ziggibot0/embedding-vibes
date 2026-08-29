@@ -1,0 +1,88 @@
+{
+  "run": "A",
+  "n": 3000,
+  "per_dim_var": [
+    0.1815936267375946,
+    0.20449349284172058,
+    0.014758771285414696,
+    0.12007614225149155,
+    0.06676985323429108,
+    0.08941982686519623,
+    0.018623080104589462,
+    0.09456751495599747
+  ],
+  "in_format_auc": 0.6976997595164592,
+  "loho": {
+    "claude_code": 0.6434884264671499,
+    "openai_solo": 0.7225855612467351,
+    "smolagents_code": 0.7686421665509321,
+    "tool_calling": 0.49296875
+  },
+  "loho_mean": 0.6569212260662043,
+  "lobo": {
+    "appworld": 0.721811393904584,
+    "browsecompplus": 0.5745093415563215,
+    "swebench": 0.6142055475388809
+  },
+  "lobo_mean": 0.6368420943332622,
+  "gates": {
+    "G1_signal_exists": true,
+    "G4_no_collapse": false,
+    "G2_transfers_like_lexical": true,
+    "G3_dream": false
+  },
+  "cross_format_step": {
+    "n_steps": 300,
+    "formats": [
+      "chat",
+      "xml",
+      "json",
+      "otel",
+      "terse"
+    ],
+    "within_step_mean_cos": 0.9996598958969116,
+    "between_step_mean_cos": 0.9706994295120239,
+    "invariance_margin": 0.028960466384887695
+  },
+  "cross_format_session": {
+    "n_sessions": 120,
+    "within_session_mean_cos": 0.9998260736465454,
+    "between_session_mean_cos": 0.9811004996299744
+  },
+  "tfidf_pca8_loho": {
+    "claude_code": 0.7698698464655912,
+    "openai_solo": 0.7792868232216422,
+    "smolagents_code": 0.8463223118423161,
+    "tool_calling": 0.6886553697183099
+  },
+  "loho_bootstrap": {
+    "claude_code": {
+      "auc": 0.6434884264671499,
+      "ci95": [
+        0.600371139573671,
+        0.6844100090303604
+      ]
+    },
+    "openai_solo": {
+      "auc": 0.7225855612467351,
+      "ci95": [
+        0.6879261162071049,
+        0.7545945565130727
+      ]
+    },
+    "smolagents_code": {
+      "auc": 0.7686421665509321,
+      "ci95": [
+        0.7358247671227961,
+        0.801083153664843
+      ]
+    },
+    "tool_calling": {
+      "auc": 0.49296875,
+      "ci95": [
+        0.448807574644037,
+        0.5387397666872413
+      ]
+    }
+  }
+}

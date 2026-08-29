@@ -120,3 +120,38 @@ If indistinguishable → embeddings don't carry the signal → dead.
 - Does the shape signal exist on the 90 existing exp3 sessions? (cheapest gate)
 - What is the right shape-vector dimension? (task-AUC vs dimension curve — 64 is a hypothesis, not a law)
 - What frequency/phase means for a trajectory through embedding space (not yet defined; tied to the tabled wave-interference project)
+
+
+---
+
+## RE-SCOPE NOTE (2026-08-28, evening — post-audit session)
+
+This document predates the session that re-audited exp1 and exp7. It remains
+here as the original design record. What changed:
+
+1. **Terminology**: all claims are now tagged (PROVEN/SUGGESTED/FALSIFIED[scope]/
+   UNTESTED) per `docs/NOMENCLATURE.md`. This doc's "core claim" is read as
+   *SUGGESTED on synthetic, FALSIFIED for velocity-dominance on real outcome
+   data, UNTESTED for cross-harness invariance*.
+2. **Spaces**: this doc's "embedding space" is now called S-space (semantic,
+   frozen encoder). "Agentic space" (A-space) is the trained, format-invariant,
+   8–64-dim space the project wants to manufacture (P2 in ROADMAP) — this doc
+   speculates it exists; it has not been tested.
+3. **Status of deltas/velocity**: the "shapes are stored as relative
+   relationships" section was the pilot's core bet. Exp7 + exp7a falsified
+   velocity-dominance for OUTCOME prediction on real variable-length sessions
+   (increment over content-matched features: +0.000). It survives scoped to
+   fixed-length, same-format structure classification (exp5 scope).
+4. **Inference/steering**: "trepidation" is now a defined term (calibrated live
+   prefix score). The three steering uses are formalized as Impl 1/2/3 in the
+   NOMENCLATURE and ROADMAP (pre-submit gate, candidate ranking, waymarkers).
+   Impl 3 (templates) requires A-space to exist → after P2.
+5. **Data**: training-data section's "format invariance" wish became the
+   format-crystallization objective (a trainable claim, ROADMAP P2), and the
+   metadata defect (harness/benchmark dropped) is P0.
+6. **New governing docs**: `docs/NOMENCLATURE.md`, `docs/ROADMAP.md`,
+   `ideas/` for parked concepts. The gate experiment section below is
+   complete (exp1/7 executed; addenda in results dirs).
+
+The engineering numbers in this doc (dims, horizons, loss components) remain
+the design baseline for P2's predictor.

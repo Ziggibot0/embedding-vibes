@@ -85,3 +85,26 @@ Nobody has tried: embed the argument, check if its trajectory shape matches know
 ## The contribution that would make reviewers care
 
 The figure that would sell this paper: a 3D plot of CoT trajectories through embedding space, fallacious ones visibly looping or diverging, valid ones progressing smoothly toward the answer region. If that figure exists and is real, the paper writes itself.
+
+---
+
+## RE-SCOPE (2026-08-28, evening): novelty table after the audit session
+
+Updated disposition of each claimed contribution:
+
+| Claim | Was | Now | Evidence |
+|---|---|---|---|
+| JEPA trajectory predictor | Medium novelty | HOLD as P2 component; must beat frozen-probe + PCA-8 baselines (0.757–0.900 AUC) before it is a contribution | exp6 (predictor works, learned proj loses signal), exp7c (8-dim PCA strong) |
+| Trajectory aggregation (K candidates → confidence/trepidation) | HIGH novelty | UNTESTED — promoted to the central signal ("trepidation"); now must be tested LIVE (K sampled continuations on real runs), not on frozen datasets | none yet on real runs |
+| Geometric fallacy detection | HIGH novelty | PROVEN per-encoder with content caveat: qwen3 above lexical equivalent (+12pts), nomic AT it. Novelty now rests on the decomposition discipline (content vs geometry controls), not on "geometry detects fallacies" per se | exp1 + re-audit addendum |
+| Cross-harness format invariance (A-space) | implicit wish | NEW central claim, UNTESTED: format-crystallization training + harness-disjoint gates (ROADMAP P2). No prior work does this for agent-session logs; also no prior work reports the content-control decomposition on agent trajectories | none yet — this is the paper's core testable novelty |
+| Low-dim live monitor | implicit | NEW: 8-dim state summary 0.757 AUC (real sessions); early-warning ramp exists; calibration study pending (P1) | exp7c, exp7b prefix curve |
+| ~~NPU interference~~ | TABLED (kept) | unchanged — `ideas/npu_wave_interference.md` | — |
+
+Reviewer-attack section addition (2026-08-28): the strongest new attack is the
+one we ran ourselves — "your embedding geometry matches TF-IDF." The paper must
+lead with the decomposition (geometry vs content per encoder/task) and claim
+only the margin above it. Second attack: "A-space is just TF-IDF/char-ngram
+robustness in disguise" — answer: A-space gates are cross-harness *retrieval
+and outcome transfer* tasks where lexical baselines are run side-by-side and
+reported, win or lose.

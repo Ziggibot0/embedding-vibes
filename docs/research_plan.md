@@ -147,3 +147,39 @@ Latent-Trajectory Signals (ICLR 2026) proved hand-crafted signals work. They did
 2. **JEPA predictor doesn't beat linear probe** → linear probes are already strong (AUC 0.87). Mitigation: the value may be in EARLIER prediction (step 2 vs step 5) and trajectory aggregation, not raw AUC.
 3. **Trajectory aggregation doesn't add signal over majority vote** → this is a novel contribution, so this would weaken the paper. Mitigation: ablation shows when aggregation helps (high disagreement cases) vs when it doesn't.
 4. **Distribution shift from large-model CoT to our model's CoT** → generate our own CoT traces with Qwen3-14B, label by test pass/fail.
+
+---
+
+## RE-SCOPE (2026-08-28, evening): plan superseded by docs/ROADMAP.md
+
+This plan was written before the exp7 audit session. Disposition of its
+components under the current ROADMAP:
+
+- **RQ1 (geometric signatures, gate)** — executed as exp1/exp2/exp3 + audits.
+  Status: PROVEN per-encoder with heavy scope caveats; nomic's signal is at
+  its lexical equivalent (TF-IDF control), qwen3's is above it. LOGICCLIMATE
+  remains an unrun cross-domain candidate.
+- **RQ2 (JEPA predictor)** — partially executed (exp6): predictor beats mean
+  baseline 62–73%; learned 64-d projection loses signal. Held: any learned
+  component in the new plan must beat the frozen-probe baseline and survive
+  dimension reduction (exp7c: 8 dims → 0.757 AUC real-session state).
+- **RQ3 (trajectory aggregation / trepidation across K candidates)** —
+  UNTESTED on real runs. Promoted: it is now the project's namesake signal
+  (trepidation, Impl 1/2/3 in ROADMAP P1/P3). Cross-candidate divergence is
+  one of the candidate operationalizations.
+- **RQ4 (fallacy detection)** — executed as exp1 (multiclass + binary + 87%
+  adversarial). The "beats LLM zero-shot" comparison stands for qwen3
+  embeddings (65.1% probe vs ~34-36% zero-shot precedent, finetuned
+  Electra-StructAware 58.8 micro-F1 on the paper's split).
+- **Phases/timeline/venues** — replaced by ROADMAP P0–P4 (instrumentation →
+  trepidation v0 → A-space crystallization → interventions → dissertation).
+- **Paper claims no longer available**: "velocity/trajectory shape dominates on
+  real data" (falsified exp7/exp7a); "encoder-independent emergent property"
+  (nomic at lexical equivalent); any cross-harness invariance claim (untested).
+
+The three related-work threads cited above remain the paper's positioning
+anchors (Microsoft ACL'26 linear probes; JEPA-for-text; embedding-geometry/
+reasoning-quality). The novel contribution is now framed as: (a) the
+content-vs-geometry decomposition discipline, (b) calibrated low-dim live
+trepidation, (c) the A-space existence test (format crystallization),
+(d) intervention evidence.

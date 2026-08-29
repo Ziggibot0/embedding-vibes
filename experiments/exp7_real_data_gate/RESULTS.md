@@ -99,3 +99,48 @@ real data in its first real test. The static representation at 0.901 AUC is
 the strongest simplest result and should anchor the next iteration. All of
 exp6b (from-scratch encoder) and the learned trajectory-encoder plans are now
 ON HOLD — they were justified by the exp5 signal, which did not transfer.
+
+---
+
+## ADDENDUM (2026-08-28): content-vs-shape controls (session-disjoint folds, cache-only)
+
+Question raised: is the 0.901 signal "path shape" or just session content? Does
+velocity (the time-implied path shape) add anything beyond the words?
+
+Controls, same session-disjoint 5 folds (seed 42), LogisticRegression(C=1.0):
+
+| Feature set | AUC |
+|---|---|
+| Format/harness tags only (top-40 [tool_call]/[user]/... counts + rates) | 0.602 |
+| mean-velocity only (768d, fixed-length) | 0.802 |
+| Static centroid+final (same folds, ref) | 0.900 |
+| TF-IDF bag-of-words on raw session text (2k) | **0.918 ± 0.010** |
+| TF-IDF + mean-velocity | 0.918 (velocity increment +0.000) |
+| TF-IDF + centroid | 0.929 |
+| TF-IDF + centroid + velocity | 0.925 (velocity increment ~0) |
+
+### Findings
+1. **Frozen-nomic "geometry" ≈ lexicon on real sessions.** TF-IDF over the raw
+   step texts MATCHES/BEATS the static centroid features (0.918 vs 0.900).
+   The untrained-probe 0.901 is real signal, but it is mostly carried by WHAT
+   the session says, not embedding-geometry-specific structure. Same lesson as
+   exp1's TF-IDF control, now confirmed on exp7 data.
+2. **Velocity/path-shape adds ZERO beyond content.** +0.000 over TF-IDF alone,
+   and ~0 even stacked on TF-IDF+centroid. mean-velocity's 0.808 is fully
+   contained in session content: trajectories do not carry direction-of-motion
+   outcome signal beyond what the text already provides on this dataset.
+   ("Velocity conveys failure with less confounding" is FALSIFIED here.)
+3. **Harness formatting is not the signal** (tags-only 0.602) — supports
+   format-invariance, i.e. features are not riding harness markers.
+
+### Implication for the cross-harness "process signature" hypothesis
+The strong claim — a time-implied path shape IDENTIFIABLE across harnesses and
+formats distinct from content — is UNTESTED, and the current data cannot test
+it: exp7's sessions.jsonl keeps no benchmark/model/harness fields (only
+steps+success+source). Next experiment (exp8) requires re-streaming
+Exgentic/agent-llm-traces-v2 KEEPING benchmark + model metadata, then
+harness-disjoint CV (train benchmarks A-C, test D-F) on shape-only features
+(velocities, curvatures, tag-free whitened steps). Falsification criterion:
+shape-feature AUC under harness shift >= 0.70 with content controls matched.
+Until then, the honest summary: on real sessions the deployable signal is
+content position (lexical or centroid), not trajectory shape.

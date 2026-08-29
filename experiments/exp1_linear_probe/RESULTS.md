@@ -63,3 +63,62 @@ This finding supports the broader hypothesis that reasoning quality (and reasoni
 - `results/pca_qwen3_embedding.npy` — PCA projections (10 components)
 - `embed.py` — embedding script (concurrent Ollama API calls)
 - `probe.py` — linear probe evaluation script
+
+---
+
+## ADDENDUM (2026-08-28): controls re-run — claim needs re-scoping
+
+Re-analysis prompted by the question "is exp1 significant, and would more sampling help?" All numbers below reproduced fresh from the cached embeddings (`embeddings_nomic_embed_text.npy` / `embeddings_qwen3_embedding.npy`, 2449 rows, zero error rows) + `edu_all.csv` raw texts, same LogisticRegression(max_iter=2000, C=1.0) protocol.
+
+### What reproduces
+- Cached CV metrics match RESULTS.md exactly (nomic 0.508/0.465, qwen3 0.651/0.613).
+- Random-label control (9.8%/10.3%) stands; no label leakage.
+- Cross-encoder per-type AUC rank consistency is real: Spearman rho=0.945, p~1e-5, n=13.
+
+### New control 1: TF-IDF lexical baseline (same CV protocol)
+- TF-IDF (word 1-2 grams, min_df=2, sublinear) + same LogisticRegression:
+  accuracy 0.490 +/- 0.014, macro-F1 0.420 +/- 0.014.
+- nomic-embed-text (0.508 / 0.465) is ~1-2 points above a bag of n-grams.
+  The "geometric signature" claim is NOT established for the small encoder.
+- qwen3-embedding (0.651 / 0.613) beats TF-IDF by +0.121 accuracy
+  (paired over 50 fold-fits: t=46.5, p=3.3e-42). Beyond-lexical signal is REAL,
+  but only demonstrated for the large encoder.
+
+### New control 2: repeated CV (50 fold fits, RepeatedStratifiedKFold 5x10)
+- qwen3: 0.617 +/- 0.015   (original 0.651 was a favorable fold draw)
+- nomic: 0.516 +/- 0.019
+- tfidf: 0.495 +/- 0.016
+Variance is already ~+/-1.5%. More sampling (LLN) cannot change any conclusion
+here. The limiting factor is controls, not N.
+
+### New control 3: split by source SITE (original_url), GroupKFold
+-QUIZ SOURCE LEAKAGE: quizizz.com alone is 1645/2449 (67%) of examples. iid CV
+ lets the probe memorize site style. Group-disjoint eval:
+  - nomic: 0.384   (vs 0.508 iid)
+  - qwen3: 0.535   (vs 0.617 repeated-iid)
+  - tfidf: 0.344
+- Note qwen3's edge GROWS under disjoint sites (+0.15..+0.19 over baselines):
+  the embedding signal generalizes across sources better than lexical style.
+  This strengthens the vibes hypothesis but was not the number reported.
+
+### Binary RQ4 artifact (fallacy vs valid)
+- 29 crafted valid + 39 sampled fallacious (n=68). Acc 92.4% -> Wilson 95% CI
+  [0.836, 0.967]; AUC 0.987. Adversarial set is n=15 (CI ~[0.62, 0.96]).
+- Stylistic confound (FALSIFICATION.md risk #1/#4) remains open and is now
+  more pressing given the TF-IDF result. Superseded in practice by exp7's
+  2000-session real-data gate (static centroid 0.901).
+
+### Literature anchor
+Jin et al. 2022 (same LOGIC dataset, their 300-sample held-out test):
+finetuned Electra 53.3 micro-F1, +structure-aware 58.8; zero-shot models 8.6-13.7;
+later LLM zero-shot ~35-36. Frozen qwen3 embedding + untrained logistic head is
+therefore competitive with finetuned-precedent-SOTA at zero training cost.
+
+### Revised claim
+- HOLD: fallacy type is strongly, linearly decodable from frozen qwen3-embedding
+  geometry of quiz-style text (>= finetuned BERT-era baselines, zero training).
+- WEAKEN: "emergent property across encoders" — both encoders are decodable, and
+  their rankings agree (rho=0.945), but nomic's decodable content is largely
+  lexical/topical (TF-IDF-equivalent). Signal exceeds surface form only for
+  qwen3-class encoders.
+- REPORT: use site-disjoint numbers as the honest generalization estimate.

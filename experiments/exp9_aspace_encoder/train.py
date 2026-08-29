@@ -35,9 +35,15 @@ torch.manual_seed(SEED); random.seed(SEED); np.random.seed(SEED)
 
 
 def load_sessions():
+    """Training corpus: the big file if it exists, else exp8's 3k as fallback."""
+    big = os.path.join(HERE, "data", "train_corpus.jsonl")
+    if os.path.exists(big):
+        sessions = [json.loads(l) for l in open(big, encoding="utf-8")]
+        log.info(f"loaded {len(sessions)} sessions from big training corpus")
+        return sessions
     path = os.path.join(EXP8, "results", "sessions_meta.jsonl")
     sessions = [json.loads(l) for l in open(path, encoding="utf-8")]
-    log.info(f"loaded {len(sessions)} sessions from exp8 extract")
+    log.info(f"loaded {len(sessions)} sessions from exp8 extract (no big corpus yet)")
     return sessions
 
 
@@ -146,24 +152,35 @@ def main():
                 device = "cpu"
                 log.info("using cpu")
 
+    # ALL sessions for MLM + BT (self-supervised, no labels needed)
+    # labeled sessions (exp8 set) for prefix consistency + outcome head
     sessions_all = load_sessions()
     tok = get_tokenizer(sessions_all)
     vocab = tok.get_vocab_size()
     PAD_ID, CLS_ID, MASK_ID = (tok.token_to_id(t) for t in ("[PAD]", "[CLS]", "[MASK]"))
 
-    sessions = [s for s in sessions_all
-                if s.get("success") is not None and s.get("harness")]
+    # ALL sessions for MLM + BT; labeled subset for prefix consistency + outcome
+    labeled = [s for s in sessions_all
+               if s.get("success") is not None and s.get("harness")]
 
-    # encode canonical steps once; keep original texts for BT renderings
-    sess = []
-    for s in sessions:
+    # encode canonical steps once for ALL sessions; keep texts for BT renderings
+    log.info("encoding steps ...")
+    sess = []   # all sessions (MLM + BT)
+    sess_labeled = []  # labeled subset (prefix + outcome)
+    for s in sessions_all:
         enc = tok.encode_batch([t[:20000] for t in s["steps"]])
         ids = [[CLS_ID] + e.ids[:MAX_LEN - 1] for e in enc]
         if len(ids) >= 2:
-            sess.append({"ids": ids, "texts": s["steps"], "harness": s["harness"],
-                         "benchmark": s["benchmark"], "y": 1 if s["success"] else 0})
-    log.info(f"{len(sess)} usable sessions, "
-             f"{len(set(x['harness'] for x in sess))} harnesses")
+            entry = {"ids": ids, "texts": s["steps"],
+                     "harness": s.get("harness", "unknown")}
+            sess.append(entry)
+            if s.get("success") is not None and s.get("harness"):
+                entry["y"] = 1 if s["success"] else 0
+                entry["benchmark"] = s.get("benchmark", "")
+                sess_labeled.append(entry)
+    log.info(f"{len(sess)} usable sessions for MLM+BT, "
+             f"{len(sess_labeled)} labeled for prefix/outcome, "
+             f"{len(set(x['harness'] for x in sess))} harness groups")
 
     model = ASpaceEncoder(vocab).to(device)
     outcome_head = nn.Linear(PROJ_DIM, 1).to(device)  # Run B only
@@ -190,7 +207,10 @@ def main():
     for epoch in range(args.epochs):
         model.train()
         for it in range(args.steps_per_epoch):
+            # sample from ALL sessions for MLM + BT
             b = rng.randint(0, len(sess), size=args.batch)
+            # sample from labeled sessions for prefix + outcome (if available)
+            b_lab = rng.randint(0, max(len(sess_labeled), 1), size=min(8, max(len(sess_labeled), 1))) if sess_labeled else np.array([], dtype=int)
 
             # ---- MLM on canonical steps
             mlm_seqs = [sess[i]["ids"][rng.randint(0, len(sess[i]["ids"]))] for i in b]
@@ -227,27 +247,33 @@ def main():
             l_bt = torch.stack(pair_terms).mean()
 
             # ---- prefix consistency + (Run B) outcome, ONE batched forward
-            # (was 8 separate forwards — the CPU bottleneck)
-            flat, bounds = [], {}
-            for k, i in enumerate(b[:8]):  # cost cap
-                ids_i = sess[i]["ids"][:PREFIX_MAX_STEPS]
-                start = len(flat)
-                flat.extend(ids_i)
-                t = rng.randint(1, len(ids_i))
-                bounds[k] = (start, t, len(ids_i), i)
-            Xf = pad_to_batch(flat).to(device)
-            zf, _ = model(Xf, (Xf == PAD_ID))
-            pfx_terms, out_terms = [], []
-            for k, (start, t, n, i) in bounds.items():
-                zi = zf[start:start + n]
-                pfx_terms.append(F.mse_loss(zi[:t].mean(0), zi.detach().mean(0)))
-                if args.run == "B":
-                    yb = torch.tensor(float(sess[i]["y"]), device=device)
-                    out_terms.append(F.binary_cross_entropy_with_logits(
-                        outcome_head(zi.mean(0).unsqueeze(0)).squeeze(), yb))
-            l_pfx = torch.stack(pfx_terms).mean() if pfx_terms else torch.tensor(0.0, device=device)
-            l_out = (torch.stack(out_terms).mean() if out_terms
-                     else torch.tensor(0.0, device=device))
+            # Uses labeled sessions (b_lab) — prefix needs no labels but we
+            # need the y for Run B's outcome head, so both use the labeled set
+            if len(b_lab) == 0:
+                l_pfx = torch.tensor(0.0, device=device)
+                l_out = torch.tensor(0.0, device=device)
+            else:
+                flat, bounds = [], {}
+                for k, i in enumerate(b_lab):
+                    i = int(i)
+                    ids_i = sess_labeled[i]["ids"][:PREFIX_MAX_STEPS]
+                    start = len(flat)
+                    flat.extend(ids_i)
+                    t = rng.randint(1, len(ids_i))
+                    bounds[k] = (start, t, len(ids_i), i)
+                Xf = pad_to_batch(flat).to(device)
+                zf, _ = model(Xf, (Xf == PAD_ID))
+                pfx_terms, out_terms = [], []
+                for k, (start, t, n, i) in bounds.items():
+                    zi = zf[start:start + n]
+                    pfx_terms.append(F.mse_loss(zi[:t].mean(0), zi.detach().mean(0)))
+                    if args.run == "B":
+                        yb = torch.tensor(float(sess_labeled[i]["y"]), device=device)
+                        out_terms.append(F.binary_cross_entropy_with_logits(
+                            outcome_head(zi.mean(0).unsqueeze(0)).squeeze(), yb))
+                l_pfx = torch.stack(pfx_terms).mean() if pfx_terms else torch.tensor(0.0, device=device)
+                l_out = (torch.stack(out_terms).mean() if out_terms
+                         else torch.tensor(0.0, device=device))
 
             loss = l_mlm + args.lambda_bt * l_bt + args.lambda_prefix * l_pfx + l_out
             opt.zero_grad()

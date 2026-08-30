@@ -1,0 +1,21 @@
+2026-08-30 17:17:16,388 loaded 3000 eval sessions from exp8
+2026-08-30 17:17:16,863 tokenizer cache hit (8000 vocab)
+2026-08-30 17:17:16,966 loaded ckpt_runA (proj_dim=8)
+C:\Users\skell\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\functional.py:6487: UserWarning: Mem Efficient attention on Current AMD GPU is still experimental. Enable it with TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1. (Triggered internally at C:\b\pytorch\aten\src\ATen\native\transformers\hip\sdp_utils.cpp:361.)
+  attn_output = scaled_dot_product_attention(
+2026-08-30 17:20:31,087 embedded 3000 sessions -> Z (3000, 8); harnesses: {'claude_code': 524, 'openai_solo': 994, 'smolagents_code': 774, 'tool_calling': 604, 'tool_calling_with_shortlisting': 104}
+2026-08-30 17:20:31,089 per-dim variance: [ 5.0096  0.9722  0.5049 19.4317  0.1698  3.9732  0.2077  1.1204]
+2026-08-30 17:20:31,140 in_format 5-fold AUC: 0.674
+2026-08-30 17:20:31,151   loho claude_code: AUC 0.566 (n=524)
+2026-08-30 17:20:31,161   loho openai_solo: AUC 0.756 (n=994)
+2026-08-30 17:20:31,167   loho smolagents_code: AUC 0.609 (n=774)
+2026-08-30 17:20:31,169   loho tool_calling: AUC 0.527 (n=604)
+2026-08-30 17:20:31,169   loho skip tool_calling_with_shortlisting (n=104)
+2026-08-30 17:20:31,181   lobo appworld: AUC 0.741 (n=893)
+2026-08-30 17:20:31,195   lobo browsecompplus: AUC 0.485 (n=1485)
+2026-08-30 17:20:31,201   lobo swebench: AUC 0.460 (n=622)
+2026-08-30 17:20:31,202 exp8 results not present yet — G2/G3 deferred
+2026-08-30 17:20:35,110 cross-format step: within 0.999 vs between 0.416
+2026-08-30 17:21:07,224 tfidf-pca8 LOHO mean: 0.771 (ours: 0.6144245725775901)
+2026-08-30 17:21:09,459 gates: {"G1_signal_exists": true, "G4_no_collapse": false}
+2026-08-30 17:21:09,459 written -> C:\Users\skell\Desktop\embedding-vibes\experiments\exp9_aspace_encoder\results\eval_runA.json

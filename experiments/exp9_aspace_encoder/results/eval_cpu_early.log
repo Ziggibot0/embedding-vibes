@@ -1,0 +1,19 @@
+2026-08-30 14:09:40,178 loaded 3000 eval sessions from exp8
+2026-08-30 14:09:40,283 tokenizer cache hit (8000 vocab)
+2026-08-30 14:09:40,494 loaded ckpt_runA (proj_dim=8)
+2026-08-30 15:46:15,618 embedded 3000 sessions -> Z (3000, 8); harnesses: {'claude_code': 524, 'openai_solo': 994, 'smolagents_code': 774, 'tool_calling': 604, 'tool_calling_with_shortlisting': 104}
+2026-08-30 15:46:15,620 per-dim variance: [ 5.8474  2.1976  0.1481 10.6622  0.0573  0.6159  1.3543  2.1228]
+2026-08-30 15:46:15,779 in_format 5-fold AUC: 0.704
+2026-08-30 15:46:15,800   loho claude_code: AUC 0.636 (n=524)
+2026-08-30 15:46:15,812   loho openai_solo: AUC 0.785 (n=994)
+2026-08-30 15:46:15,830   loho smolagents_code: AUC 0.711 (n=774)
+2026-08-30 15:46:15,856   loho tool_calling: AUC 0.563 (n=604)
+2026-08-30 15:46:15,857   loho skip tool_calling_with_shortlisting (n=104)
+2026-08-30 15:46:15,887   lobo appworld: AUC 0.720 (n=893)
+2026-08-30 15:46:15,916   lobo browsecompplus: AUC 0.482 (n=1485)
+2026-08-30 15:46:15,939   lobo swebench: AUC 0.510 (n=622)
+2026-08-30 15:46:15,939 exp8 results not present yet — G2/G3 deferred
+2026-08-30 15:48:51,083 cross-format step: within 0.997 vs between 0.472
+2026-08-30 16:11:12,427 tfidf-pca8 LOHO mean: 0.771 (ours: 0.6735423962073631)
+2026-08-30 16:11:19,376 gates: {"G1_signal_exists": true, "G4_no_collapse": false}
+2026-08-30 16:11:19,376 written -> C:\Users\skell\Desktop\embedding-vibes\experiments\exp9_aspace_encoder\results\eval_runA.json

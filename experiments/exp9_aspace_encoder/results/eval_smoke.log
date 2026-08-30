@@ -1,0 +1,11 @@
+2026-08-29 02:08:27,716 loaded 3000 sessions from exp8 extract
+2026-08-29 02:08:27,733 tokenizer cache hit (8000 vocab)
+2026-08-29 02:08:27,804 loaded ckpt_runA (proj_dim=8)
+2026-08-29 02:08:27,805 DEBUG limit: 150 sessions
+2026-08-29 02:12:14,999 embedded 150 sessions -> Z (150, 8); harnesses: {'claude_code': 92, 'openai_solo': 58}
+2026-08-29 02:12:15,000 per-dim variance: [0.0193 0.0917 0.0086 0.0909 0.0337 0.0089 0.0072 0.0465]
+2026-08-29 02:12:15,027 in_format 5-fold AUC: 0.587
+2026-08-29 02:12:15,027   loho skip claude_code (n=92)
+2026-08-29 02:12:15,027   loho skip openai_solo (n=58)
+2026-08-29 02:12:15,027   lobo skip appworld (n=150)
+2026-08-29 02:12:59,718 cross-format step: within 1.000 vs between 0.987

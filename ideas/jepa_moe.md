@@ -78,8 +78,9 @@ benchmark-disjoint evaluation? If yes, the MoE architecture is validated and
 the LOBO collapse becomes a feature, not a bug.
 
 ## Relationship to the dissertation
-This is the architecture chapter. Chapter 1 (this paper) proves A-space
-exists. Chapter 2 (generalization) shows it applies to any process domain.
-Chapter 3 (MoE) shows the domains compose into a practical system. Chapter 4
-(personalization) shows user-level calibration. Each chapter builds on the
-last; each is independently publishable.
+This is the architecture chapter (speculative, contingent on A-space being
+proven). Chapter 1 proves A-space exists [UNTESTED — exp9 pending]. Chapter 2
+(generalization) shows it applies to any process domain. Chapter 3 (MoE)
+shows the domains compose into a practical system. Chapter 4 (personalization)
+shows user-level calibration. Each chapter builds on the last; each is
+independently publishable — IF the base case holds.

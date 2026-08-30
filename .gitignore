@@ -27,3 +27,5 @@ Thumbs.db
 # Secrets
 .env
 *.key
+# large regenerable caches
+experiments/exp8_harness_disjoint/results/*.npy

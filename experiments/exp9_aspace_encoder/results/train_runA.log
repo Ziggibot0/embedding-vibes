@@ -1,0 +1,20 @@
+2026-08-30 10:31:44,020 loaded 60000 sessions frtokenizer cache hit (8002026-08-30encoding steps ...
+60000 usable sessions for MLM+BT, 0 labeled for prefix/outcome, 6 harnes2026-08-30ep1 it   0 mlm=9.186 bt=6.186 vic=1.669 pfx=0.000 out=0.000 (6s)
+ep1 it 100 mlm=8.891 bt=0.587 vic=1.387 pfx=0.000 out=0.000 (362s)
+ep1 it 200 mlm=8.161 bt=0.252 vic=0.000 pfx=0.000 out=0.000 (723s)
+ep1 it 300 mlm=7.295 bt=0.190 vic=0.000 pfx=0.000 out=0.000 (1069s)
+ep1 it 400 mlm=6.831 bt=0.134 vic=0.000 pfx=0.000 out=0.000 (1422s)
+ep1 it 500 mlm=6.716 bt=0.117 vic=0.000 pfx=0.000 out=0.000 (1782s)
+ep1 it 600 mlm=6.721 bt=0.082 vic=0.000 pfx=0.000 out=0.000 (2130s)
+ep1 it 700 mlm=6.086 bt=0.111 vic=0.000 pfx=0.000 out=0.000 (2476s)
+er\train.py:301: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\b\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  log.info(f"ep{epoch+1} it{it:4d} mlm={float(l_mlm):.3f} "
+2026-08-30 10:34:59,307 ep1 it   0 mlm=9.186 bt=6.186 vic=1.669 pfx=0.000 out=0.000 (6s)
+2026-08-30 10:40:55,367 ep1 it 100 mlm=8.891 bt=0.587 vic=1.387 pfx=0.000 out=0.000 (362s)
+2026-08-30 10:46:56,187 ep1 it 200 mlm=8.161 bt=0.252 vic=0.000 pfx=0.000 out=0.000 (723s)
+2026-08-30 10:52:42,594 ep1 it 300 mlm=7.295 bt=0.190 vic=0.000 pfx=0.000 out=0.000 (1069s)
+2026-08-30 10:58:35,168 ep1 it 400 mlm=6.831 bt=0.134 vic=0.000 pfx=0.000 out=0.000 (1422s)
+2026-08-30 11:04:35,196 ep1 it 500 mlm=6.716 bt=0.117 vic=0.000 pfx=0.000 out=0.000 (1782s)
+2026-08-30 11:10:23,868 ep1 it 600 mlm=6.721 bt=0.082 vic=0.000 pfx=0.000 out=0.000 (2130s)
+2026-08-30 11:16:09,024 ep1 it 700 mlm=6.086 bt=0.111 vic=0.000 pfx=0.000 out=0.000 (2476s)

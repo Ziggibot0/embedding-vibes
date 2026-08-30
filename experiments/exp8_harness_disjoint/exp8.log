@@ -1,0 +1,231 @@
+2026-08-28 23:54:51,563 [extract] streaming Exgentic/agent-llm-traces-v2 ...
+2026-08-28 23:54:51,684 HTTP Request: HEAD https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-28 23:54:51,684 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-28 23:54:51,708 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/Exgentic/agent-llm-traces-v2/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/README.md "HTTP/1.1 200 OK"
+2026-08-28 23:54:51,762 HTTP Request: HEAD https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/agent-llm-traces-v2.py "HTTP/1.1 404 Not Found"
+2026-08-28 23:54:51,903 HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/Exgentic/agent-llm-traces-v2/Exgentic/agent-llm-traces-v2.py "HTTP/1.1 404 Not Found"
+2026-08-28 23:54:51,960 HTTP Request: GET https://huggingface.co/api/datasets/Exgentic/agent-llm-traces-v2/revision/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814 "HTTP/1.1 200 OK"
+2026-08-28 23:54:52,016 HTTP Request: HEAD https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/.huggingface.yaml "HTTP/1.1 404 Not Found"
+2026-08-28 23:54:52,144 HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=Exgentic/agent-llm-traces-v2 "HTTP/1.1 200 OK"
+2026-08-28 23:54:52,203 HTTP Request: GET https://huggingface.co/api/datasets/Exgentic/agent-llm-traces-v2/tree/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data%2Ftrain?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-28 23:54:52,260 HTTP Request: GET https://huggingface.co/api/datasets/Exgentic/agent-llm-traces-v2/tree/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-28 23:54:52,326 HTTP Request: HEAD https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-08-28 23:54:53,423 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0000.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:54:53,655 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/7e2926dcdb0f77eae531a914124b3f9476d68d18d66ba9495f0ae59a665ef6ad?X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270000.parquet%3B+filename%3D%220000.parquet%22%3B&user_id=public&Expires=1787979288&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzdlMjkyNmRjZGIwZjc3ZWFlNTMxYTkxNDEyNGIzZjk0NzZkNjhkMThkNjZiYTk0OTVmMGFlNTlhNjY1ZWY2YWRcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMC5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMC5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyODh9fX1dfQ__&Signature=MEQCIG4t6KHMO5XDj-0zVSkvSSxl2B7bgfKt77bIcN4cq3IlAiBwX-6MJZfu4qCbychnVN%7EAXfdu74QqifT3mXQoz8iq3g__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:54:53,799 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0000.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:54:53,934 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/7e2926dcdb0f77eae531a914124b3f9476d68d18d66ba9495f0ae59a665ef6ad?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270000.parquet%3B+filename%3D%220000.parquet%22%3B&X-Xet-Cas-Uid=public&user_id=public&Expires=1787979289&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzdlMjkyNmRjZGIwZjc3ZWFlNTMxYTkxNDEyNGIzZjk0NzZkNjhkMThkNjZiYTk0OTVmMGFlNTlhNjY1ZWY2YWRcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMC5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMC5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyODl9fX1dfQ__&Signature=MEQCIAmJ5-d3rCPplyOfc7nVZkMS1iKTHtYxu9YJa0y2VcT%7EAiARKWFI%7Eu2kOkhmE3%7E-9%7EPUnYFtkxmn9RvrspfbVMmN3Q__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:54:54,061 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0000.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:54:54,234 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/7e2926dcdb0f77eae531a914124b3f9476d68d18d66ba9495f0ae59a665ef6ad?X-Xet-Cas-Uid=public&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270000.parquet%3B+filename%3D%220000.parquet%22%3B&Expires=1787979289&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzdlMjkyNmRjZGIwZjc3ZWFlNTMxYTkxNDEyNGIzZjk0NzZkNjhkMThkNjZiYTk0OTVmMGFlNTlhNjY1ZWY2YWRcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ1c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMC5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMC5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyODl9fX1dfQ__&Signature=MEQCIBcOUUUuHls3UULEmAcu7awNMvfypGLb7HnY070EOkn2AiADwRCgYURR6P7WJfTAbyMJoNIQQmaPDocHlYCFZdVBAQ__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:54:57,115 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0001.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:54:57,238 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/e704a6b61fa47537c2d20988017bb0717b02fd812c3a0f02a9899912f8b68cfe?user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270001.parquet%3B+filename%3D%220001.parquet%22%3B&X-Xet-Cas-Uid=public&Expires=1787979292&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2U3MDRhNmI2MWZhNDc1MzdjMmQyMDk4ODAxN2JiMDcxN2IwMmZkODEyYzNhMGYwMmE5ODk5OTEyZjhiNjhjZmVcXD91c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMS5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTJ9fX1dfQ__&Signature=MEUCIF-bG0flW3TKgd0t%7EkFSXXfYxHeOcWQh3VmhjDqN47uhAiEAgTR5NN8EunHhL82sa20hkASS0tPvTjr9vPO-3chUJ7s_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:54:57,296 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0001.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:54:57,580 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/e704a6b61fa47537c2d20988017bb0717b02fd812c3a0f02a9899912f8b68cfe?X-Xet-Cas-Uid=public&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270001.parquet%3B+filename%3D%220001.parquet%22%3B&Expires=1787979292&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2U3MDRhNmI2MWZhNDc1MzdjMmQyMDk4ODAxN2JiMDcxN2IwMmZkODEyYzNhMGYwMmE5ODk5OTEyZjhiNjhjZmVcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ1c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMS5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTJ9fX1dfQ__&Signature=MEUCIQDsGWmxH-enixRtvxlVi0A4r23LFk9s9ebULvBos6z4-wIgEsOtPOQaxJaoxhtKvHgCTVfLT5ntrpyTNpnhEjU1CiI_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:54:57,753 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0001.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:54:58,030 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/e704a6b61fa47537c2d20988017bb0717b02fd812c3a0f02a9899912f8b68cfe?user_id=public&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270001.parquet%3B+filename%3D%220001.parquet%22%3B&Expires=1787979293&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2U3MDRhNmI2MWZhNDc1MzdjMmQyMDk4ODAxN2JiMDcxN2IwMmZkODEyYzNhMGYwMmE5ODk5OTEyZjhiNjhjZmVcXD91c2VyX2lkPXB1YmxpYyZYLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMS5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTN9fX1dfQ__&Signature=MEUCID%7Eq7T0VXhGVW9%7EmkMSJ9icfAltAxJUQj0PwR4BGBRKtAiEAqquLbozwuNqUCu66NkBrZxSccqnWx0oLUwJd-LR8xAQ_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:01,122   200 written (8s)
+2026-08-28 23:55:01,388 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0002.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:01,548 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/68b3743c84d35ce07ed1bd20dcefcf8d52414a9abbc0bc5de5368ab08e0188c5?user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270002.parquet%3B+filename%3D%220002.parquet%22%3B&X-Xet-Cas-Uid=public&Expires=1787979296&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzY4YjM3NDNjODRkMzVjZTA3ZWQxYmQyMGRjZWZjZjhkNTI0MTRhOWFiYmMwYmM1ZGU1MzY4YWIwOGUwMTg4YzVcXD91c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMi5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMi5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTZ9fX1dfQ__&Signature=MEYCIQC%7EwCYT-YbOxqw9-vsxUy97Ql%7ENaTf-Q8TARrvffT9KjgIhANQ7MqsFNuWlIgDw0yk8E6vKvBgkzI-VljcyFcMyZ%7E0-&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:01,618 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0002.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:01,750 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/68b3743c84d35ce07ed1bd20dcefcf8d52414a9abbc0bc5de5368ab08e0188c5?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270002.parquet%3B+filename%3D%220002.parquet%22%3B&X-Xet-Cas-Uid=public&user_id=public&Expires=1787979296&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzY4YjM3NDNjODRkMzVjZTA3ZWQxYmQyMGRjZWZjZjhkNTI0MTRhOWFiYmMwYmM1ZGU1MzY4YWIwOGUwMTg4YzVcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMi5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMi5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTZ9fX1dfQ__&Signature=MEQCIHA8u7ZWD0vHYHRVLrlIKzuHEX4KDlzuaHUlmfWuKJ0VAiBWJE8wC5jiNmpz4r1CBdBj-YkEBc3tRm6kFZrIdxUUlQ__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:01,940 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0002.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:02,233 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/68b3743c84d35ce07ed1bd20dcefcf8d52414a9abbc0bc5de5368ab08e0188c5?X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270002.parquet%3B+filename%3D%220002.parquet%22%3B&user_id=public&Expires=1787979297&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzY4YjM3NDNjODRkMzVjZTA3ZWQxYmQyMGRjZWZjZjhkNTI0MTRhOWFiYmMwYmM1ZGU1MzY4YWIwOGUwMTg4YzVcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMi5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMi5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTd9fX1dfQ__&Signature=MEYCIQCDNaBMZ9fflpIcFamyHqWEXSkdXESbOpEP9zRje3Ky%7EwIhAMcPoGQJTkF%7Ez1WjrD-TaRCa9wmUz5VIq-3vMDKMIttn&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:04,100   400 written (11s)
+2026-08-28 23:55:04,364   600 written (11s)
+2026-08-28 23:55:04,449 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0003.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:04,586 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/3a64b966e8c60bdcdbfde1fe6c1842974a831a968d8b967f9c0ec5b08deb3504?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270003.parquet%3B+filename%3D%220003.parquet%22%3B&X-Xet-Cas-Uid=public&user_id=public&Expires=1787979299&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzNhNjRiOTY2ZThjNjBiZGNkYmZkZTFmZTZjMTg0Mjk3NGE4MzFhOTY4ZDhiOTY3ZjljMGVjNWIwOGRlYjM1MDRcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMy5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMy5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTl9fX1dfQ__&Signature=MEUCIQDYvg%7EKD5t9TEf948xDLjJnEpw7Wp%7EswkiYvzHryokRdAIgSYjpBRdDqPT2O-U8fpJJWFu6oM5q2s7UogWll4EtURE_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:04,640 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0003.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:04,780 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/3a64b966e8c60bdcdbfde1fe6c1842974a831a968d8b967f9c0ec5b08deb3504?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270003.parquet%3B+filename%3D%220003.parquet%22%3B&user_id=public&X-Xet-Cas-Uid=public&Expires=1787979299&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzNhNjRiOTY2ZThjNjBiZGNkYmZkZTFmZTZjMTg0Mjk3NGE4MzFhOTY4ZDhiOTY3ZjljMGVjNWIwOGRlYjM1MDRcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMy5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMy5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkyOTl9fX1dfQ__&Signature=MEUCID938KUtAvv3mbGCjOfpgdLfPpH5alCJ65nqS25JqpR3AiEAsOYYqw0kNKVzKhEis406Scx3K%7EaUm-RNCp0SrHItfrs_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:04,883 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0003.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:05,184 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/3a64b966e8c60bdcdbfde1fe6c1842974a831a968d8b967f9c0ec5b08deb3504?user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270003.parquet%3B+filename%3D%220003.parquet%22%3B&X-Xet-Cas-Uid=public&Expires=1787979300&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzNhNjRiOTY2ZThjNjBiZGNkYmZkZTFmZTZjMTg0Mjk3NGE4MzFhOTY4ZDhiOTY3ZjljMGVjNWIwOGRlYjM1MDRcXD91c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwMy5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwMy5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMDB9fX1dfQ__&Signature=MEYCIQDnCMVA%7E0-IjHo-fmTUgbYfEP8nKeRB29nEJpoAPiuguAIhAL0wGsXkn2ymBNqPYDM2TWGrvGfnL9QkE0NYjd%7EURSzY&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:10,876   800 written (18s)
+2026-08-28 23:55:11,672 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0004.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:11,823 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/208afca87fa15d88f75bcec444f62969abeef9b941a0364b0746f09100f1799a?user_id=public&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270004.parquet%3B+filename%3D%220004.parquet%22%3B&Expires=1787979306&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzIwOGFmY2E4N2ZhMTVkODhmNzViY2VjNDQ0ZjYyOTY5YWJlZWY5Yjk0MWEwMzY0YjA3NDZmMDkxMDBmMTc5OWFcXD91c2VyX2lkPXB1YmxpYyZYLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNC5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNC5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMDZ9fX1dfQ__&Signature=MEYCIQDuqKyQSaua4Dv2bgKexJ8R-gIW8QpYVyGxcXm8VOrj5AIhAKAo7pmICyLuAXj3GO-2Q7md-mff1MYeJ6mZDdaVZO5n&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:11,885 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0004.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:12,007 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/208afca87fa15d88f75bcec444f62969abeef9b941a0364b0746f09100f1799a?X-Xet-Cas-Uid=public&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270004.parquet%3B+filename%3D%220004.parquet%22%3B&Expires=1787979307&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzIwOGFmY2E4N2ZhMTVkODhmNzViY2VjNDQ0ZjYyOTY5YWJlZWY5Yjk0MWEwMzY0YjA3NDZmMDkxMDBmMTc5OWFcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ1c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNC5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNC5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMDd9fX1dfQ__&Signature=MEYCIQCfxAsilvkyRSMMkAu-O1Ofa7UOWwEdQ3mWJlpLv2mcaQIhAPrfCJJi2WjTM7V0iJLUzCWGwO1tn%7EQDYTbdzzS711Ot&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:12,080 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0004.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:12,314 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/208afca87fa15d88f75bcec444f62969abeef9b941a0364b0746f09100f1799a?X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270004.parquet%3B+filename%3D%220004.parquet%22%3B&user_id=public&Expires=1787979307&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzIwOGFmY2E4N2ZhMTVkODhmNzViY2VjNDQ0ZjYyOTY5YWJlZWY5Yjk0MWEwMzY0YjA3NDZmMDkxMDBmMTc5OWFcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNC5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNC5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMDd9fX1dfQ__&Signature=MEUCIQCoAz%7ElaU6L%7EIBmElUpkAdkskmDln051EOJN2hzrF7k5wIgYtN6QOgmibm%7EovN%7ELEhSC7Vw9aykLYMyslKjt5qvS5c_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:16,391   1000 written (23s)
+2026-08-28 23:55:17,222 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0005.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:17,362 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/de375fc7e3f5961f9114ca81ca80ee34103af585f24fd59b6490ac7aeb90b31c?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270005.parquet%3B+filename%3D%220005.parquet%22%3B&user_id=public&X-Xet-Cas-Uid=public&Expires=1787979312&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2RlMzc1ZmM3ZTNmNTk2MWY5MTE0Y2E4MWNhODBlZTM0MTAzYWY1ODVmMjRmZDU5YjY0OTBhYzdhZWI5MGIzMWNcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNS5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMTJ9fX1dfQ__&Signature=MEUCIQDkfy59lzk9vafQocute6LOJPUh8eL2l0%7E7Oy%7E-i4juZgIgVPuhkbPk8jCtOPE8GWMxmhr4LxMZA2YIgzeJpIBuVXM_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:17,430 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0005.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:17,582 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/de375fc7e3f5961f9114ca81ca80ee34103af585f24fd59b6490ac7aeb90b31c?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270005.parquet%3B+filename%3D%220005.parquet%22%3B&user_id=public&X-Xet-Cas-Uid=public&Expires=1787979312&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2RlMzc1ZmM3ZTNmNTk2MWY5MTE0Y2E4MWNhODBlZTM0MTAzYWY1ODVmMjRmZDU5YjY0OTBhYzdhZWI5MGIzMWNcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNS5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMTJ9fX1dfQ__&Signature=MEUCIQDkfy59lzk9vafQocute6LOJPUh8eL2l0%7E7Oy%7E-i4juZgIgVPuhkbPk8jCtOPE8GWMxmhr4LxMZA2YIgzeJpIBuVXM_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:17,751 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0005.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:18,025 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/de375fc7e3f5961f9114ca81ca80ee34103af585f24fd59b6490ac7aeb90b31c?X-Xet-Cas-Uid=public&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270005.parquet%3B+filename%3D%220005.parquet%22%3B&Expires=1787979313&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2RlMzc1ZmM3ZTNmNTk2MWY5MTE0Y2E4MWNhODBlZTM0MTAzYWY1ODVmMjRmZDU5YjY0OTBhYzdhZWI5MGIzMWNcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ1c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNS5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMTN9fX1dfQ__&Signature=MEYCIQDyiJ-lrHuoVk3FEFK4BaGFHARb0gZ7D6VHQEDDs4oXiAIhAJArEi69p25dqLDj3AS8HezkwLO2DtJ1cCs2%7EnhDvIRO&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:30,628   1200 written (37s)
+2026-08-28 23:55:30,760   1400 written (37s)
+2026-08-28 23:55:30,959   1600 written (38s)
+2026-08-28 23:55:31,076   1800 written (38s)
+2026-08-28 23:55:31,169 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0005.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:31,409 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/de375fc7e3f5961f9114ca81ca80ee34103af585f24fd59b6490ac7aeb90b31c?user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270005.parquet%3B+filename%3D%220005.parquet%22%3B&X-Xet-Cas-Uid=public&Expires=1787979326&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2RlMzc1ZmM3ZTNmNTk2MWY5MTE0Y2E4MWNhODBlZTM0MTAzYWY1ODVmMjRmZDU5YjY0OTBhYzdhZWI5MGIzMWNcXD91c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNS5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMjZ9fX1dfQ__&Signature=MEYCIQCSc%7EdfcbgHTjRhrZBdWO4xniibIfac94HfFkmUTtzBuwIhAM-gPyyqx-60D8-u4zQM2WbMCfl2t7aE%7EYuvgx7OYKgq&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:39,045   2000 written (46s)
+2026-08-28 23:55:39,297   2200 written (46s)
+2026-08-28 23:55:39,588 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0005.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:39,744 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/de375fc7e3f5961f9114ca81ca80ee34103af585f24fd59b6490ac7aeb90b31c?user_id=public&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270005.parquet%3B+filename%3D%220005.parquet%22%3B&Expires=1787979334&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmL2RlMzc1ZmM3ZTNmNTk2MWY5MTE0Y2E4MWNhODBlZTM0MTAzYWY1ODVmMjRmZDU5YjY0OTBhYzdhZWI5MGIzMWNcXD91c2VyX2lkPXB1YmxpYyZYLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNS5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNS5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMzR9fX1dfQ__&Signature=MEUCIQCP7qKlg85b6zhGWPUea7O8dmCZZ7mP5--4xfDLMG7SiAIgZbP3a5Dk7lYycfZxGBo%7EK4MIvNB-qbRjiQvvVj4Yv6Q_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:40,987   2400 written (48s)
+2026-08-28 23:55:41,152 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0006.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:41,270 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/922ada186331bd1751d112d53d9e7e464f717a0e20b9cede2c38a603b894984d?X-Xet-Cas-Uid=public&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270006.parquet%3B+filename%3D%220006.parquet%22%3B&Expires=1787979336&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzkyMmFkYTE4NjMzMWJkMTc1MWQxMTJkNTNkOWU3ZTQ2NGY3MTdhMGUyMGI5Y2VkZTJjMzhhNjAzYjg5NDk4NGRcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ1c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNi5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNi5wYXJxdWV0JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMzZ9fX1dfQ__&Signature=MEQCIBXB0FE24Qm9sVG3pfrqPGMmmMDlgkrTMOmDgH-Of7DtAiAqXprxyynMxcZKErI7laS1GW-mWAUz98rIRtJoGvvkLQ__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:41,336 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0006.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:41,503 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/922ada186331bd1751d112d53d9e7e464f717a0e20b9cede2c38a603b894984d?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270006.parquet%3B+filename%3D%220006.parquet%22%3B&X-Xet-Cas-Uid=public&user_id=public&Expires=1787979336&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzkyMmFkYTE4NjMzMWJkMTc1MWQxMTJkNTNkOWU3ZTQ2NGY3MTdhMGUyMGI5Y2VkZTJjMzhhNjAzYjg5NDk4NGRcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNi5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNi5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMzZ9fX1dfQ__&Signature=MEUCIQCPS2RfgaLBoqGy6lBgLbnmGckK6tpJsAzWCC9OaPmD3AIgJerwXetZF6mCpWIX4nVWwlLsWOjJVSqJyMl6Qw-mZJ8_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:41,646 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0006.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:41,964 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/922ada186331bd1751d112d53d9e7e464f717a0e20b9cede2c38a603b894984d?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270006.parquet%3B+filename%3D%220006.parquet%22%3B&user_id=public&X-Xet-Cas-Uid=public&Expires=1787979336&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzkyMmFkYTE4NjMzMWJkMTc1MWQxMTJkNTNkOWU3ZTQ2NGY3MTdhMGUyMGI5Y2VkZTJjMzhhNjAzYjg5NDk4NGRcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNi5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNi5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzMzZ9fX1dfQ__&Signature=MEUCIDhhRV98x0Y2nBoJ8NQBrYw-jja083wQ8tDbRk5R32iuAiEA6wv9CE7hjVni4jmRRRonZAzOtSgk8s8ZJbv4zsecK2M_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:46,312   2600 written (53s)
+2026-08-28 23:55:46,460   2800 written (53s)
+2026-08-28 23:55:46,932 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0007.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:47,113 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/31398f6f9bc02fa628decfd7def2b389f91353e00409bcdd870864bd3427617a?X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270007.parquet%3B+filename%3D%220007.parquet%22%3B&user_id=public&Expires=1787979342&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzMxMzk4ZjZmOWJjMDJmYTYyOGRlY2ZkN2RlZjJiMzg5ZjkxMzUzZTAwNDA5YmNkZDg3MDg2NGJkMzQyNzYxN2FcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNy5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNy5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzNDJ9fX1dfQ__&Signature=MEYCIQDOULbS-LeETYUBC7SDE9WC8s9ilS4hV7AegjVXW4fUVgIhAP5AgUHPBeHlPhvn7YUP4mT2ml39nQmXWg9Xh7rdpVku&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:47,184 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0007.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:47,429 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/31398f6f9bc02fa628decfd7def2b389f91353e00409bcdd870864bd3427617a?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270007.parquet%3B+filename%3D%220007.parquet%22%3B&X-Xet-Cas-Uid=public&user_id=public&Expires=1787979342&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzMxMzk4ZjZmOWJjMDJmYTYyOGRlY2ZkN2RlZjJiMzg5ZjkxMzUzZTAwNDA5YmNkZDg3MDg2NGJkMzQyNzYxN2FcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNy5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNy5wYXJxdWV0JTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzNDJ9fX1dfQ__&Signature=MEUCIQCdT92fH3ciHUYjtJiMpcqp5dgQuoDaE96%7EnUys0ZizIAIgXfdJcHFz9gY8XAIHT9YVm04X8bVHQ-bE5scvrvUS5Kw_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:47,718 HTTP Request: GET https://huggingface.co/datasets/Exgentic/agent-llm-traces-v2/resolve/4b8ad4ab198438e5a170f9171c19c6a2cf7c1814/data/train/0007.parquet "HTTP/1.1 302 Found"
+2026-08-28 23:55:48,010 HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/6a2923ce04c463f18f184a0f/31398f6f9bc02fa628decfd7def2b389f91353e00409bcdd870864bd3427617a?response-content-disposition=inline%3B+filename*%3DUTF-8%27%270007.parquet%3B+filename%3D%220007.parquet%22%3B&user_id=public&X-Xet-Cas-Uid=public&Expires=1787979342&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEyOTIzY2UwNGM0NjNmMThmMTg0YTBmLzMxMzk4ZjZmOWJjMDJmYTYyOGRlY2ZkN2RlZjJiMzg5ZjkxMzUzZTAwNDA5YmNkZDg3MDg2NGJkMzQyNzYxN2FcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3MDAwNy5wYXJxdWV0JTNCK2ZpbGVuYW1lJTNEJTIyMDAwNy5wYXJxdWV0JTIyJTNCJnVzZXJfaWQ9cHVibGljJlgtWGV0LUNhcy1VaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc5NzkzNDJ9fX1dfQ__&Signature=MEQCIGW2Qvsi11pjYEtd1g8Yh4qIGhvToS-sD9hr%7EeRwIWvyAiBicDEUh3f08JF-n1v8GvTLbrSRPUOdKBN923r116OyPA__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 206 Partial Content"
+2026-08-28 23:55:58,396   3000 written (65s)
+2026-08-28 23:55:58,396 [extract] cap 3000 reached — documented in DESIGN.md
+2026-08-28 23:55:58,398 [extract] done: 3000 sessions in 65s -> C:\Users\skell\Desktop\embedding-vibes\experiments\exp8_harness_disjoint\results\sessions_meta.jsonl
+2026-08-28 23:55:58,485 [main] 3000 sessions loaded
+2026-08-28 23:55:59,327 [embed] seeded 30841 vectors from exp7 cache (30830 texts skipped)
+2026-08-28 23:55:59,327 [embed] unique texts to embed: 17988 (cache has 30841)
+2026-08-28 23:58:08,814   500/17988 (4/s ETA 4529s)
+2026-08-28 23:59:53,895   embed fail: '{"thought":"Inspect repository to locate json_script impleme': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:00:18,962   1000/17988 (4/s ETA 4411s)
+2026-08-29 00:00:19,954   embed fail: '{"thought":"Inspect repository, reproduce issue with current': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:02:27,017   1500/17988 (4/s ETA 4261s)
+2026-08-29 00:04:35,772   2000/17988 (4/s ETA 4128s)
+2026-08-29 00:06:44,899   2500/17988 (4/s ETA 3999s)
+2026-08-29 00:08:53,203   3000/17988 (4/s ETA 3866s)
+2026-08-29 00:11:01,635   3500/17988 (4/s ETA 3735s)
+2026-08-29 00:13:10,561   4000/17988 (4/s ETA 3606s)
+2026-08-29 00:13:57,595   embed fail: '{"thought":"Use bash to inspect the repo, find the shared Ba': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:15:20,390   4500/17988 (4/s ETA 3480s)
+2026-08-29 00:17:30,388   5000/17988 (4/s ETA 3354s)
+2026-08-29 00:19:39,629   5500/17988 (4/s ETA 3225s)
+2026-08-29 00:21:48,146   6000/17988 (4/s ETA 3095s)
+2026-08-29 00:23:57,116   6500/17988 (4/s ETA 2965s)
+2026-08-29 00:26:05,629   7000/17988 (4/s ETA 2835s)
+2026-08-29 00:27:01,282   embed fail: '{"thought":"Avoid embedding triple-quoted strings inside pyt': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:28:15,318   7500/17988 (4/s ETA 2707s)
+2026-08-29 00:30:23,984   8000/17988 (4/s ETA 2578s)
+2026-08-29 00:30:48,977   embed fail: '{"thought":"Need to restart clean: perform searches, identif': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:32:32,942   8500/17988 (4/s ETA 2449s)
+2026-08-29 00:34:41,797   9000/17988 (4/s ETA 2319s)
+2026-08-29 00:36:28,359   embed fail: '{"thought":"The python_interpreter is strict about multiline': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:36:50,960   9500/17988 (4/s ETA 2190s)
+2026-08-29 00:38:59,856   10000/17988 (4/s ETA 2061s)
+2026-08-29 00:41:07,697   10500/17988 (4/s ETA 1931s)
+2026-08-29 00:42:21,880   embed fail: 'The available tools are defined as follows:\n- `supervisor__s': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:43:17,443   11000/17988 (4/s ETA 1803s)
+2026-08-29 00:45:23,531   embed fail: '{"thought":"Inspect repository for Digest auth implementatio': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:45:27,623   11500/17988 (4/s ETA 1675s)
+2026-08-29 00:47:36,443   12000/17988 (4/s ETA 1545s)
+2026-08-29 00:49:45,085   12500/17988 (4/s ETA 1416s)
+2026-08-29 00:51:53,732   13000/17988 (4/s ETA 1287s)
+2026-08-29 00:54:02,007   13500/17988 (4/s ETA 1158s)
+2026-08-29 00:54:10,714   embed fail: '{"thought":"Inspect repository, locate Django-like ORM code ': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:56:10,311   embed fail: '{"thought":"Inspect repository structure and identify where ': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 00:56:12,280   14000/17988 (4/s ETA 1029s)
+2026-08-29 00:58:22,097   14500/17988 (4/s ETA 900s)
+2026-08-29 00:59:38,974   embed fail: 'The test suite has finished running. The results are:\n\n婚庆蛋婚庆': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 01:00:31,085   15000/17988 (4/s ETA 771s)
+2026-08-29 01:01:48,065   embed fail: '{"thought":"Inspect repository to locate autodoc logic handl': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 01:01:49,497   embed fail: '{\n  "thought": "I have the list of downloaded songs. Let me ': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 01:02:41,787   15500/17988 (4/s ETA 642s)
+2026-08-29 01:04:51,345   16000/17988 (4/s ETA 513s)
+2026-08-29 01:07:00,786   16500/17988 (4/s ETA 384s)
+2026-08-29 01:08:22,981   embed fail: '{"thought":"Inspect SymPy Function._eval_evalf implementatio': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 01:09:10,471   17000/17988 (4/s ETA 255s)
+2026-08-29 01:10:19,872   embed fail: '{"thought":"Inspect repository structure and locate XOR/Q fa': embed failed: 500 {"error":"the input length exceeds the context length"}
+2026-08-29 01:11:20,452   17500/17988 (4/s ETA 126s)
+2026-08-29 01:13:26,554 [embed] done: +17988, 15 failures, cache=48814 in 4647s
+2026-08-29 01:13:30,987 [main] cache size 48814, EMB_LEN=768
+2026-08-29 01:13:32,495 [main] usable: 3000 sessions, pos=1579, harness groups: Counter({'openai_solo': 994, 'smolagents_code': 774, 'tool_calling': 604, 'claude_code': 524, 'tool_calling_with_shortlisting': 104})
+2026-08-29 01:13:33,691 [in_format] static_full        AUC 0.924
+2026-08-29 01:13:33,875 [loho] hold=claude_code AUC 0.887 (n=524)
+2026-08-29 01:13:33,990 [loho] hold=openai_solo AUC 0.799 (n=994)
+2026-08-29 01:13:34,128 [loho] hold=smolagents_code AUC 0.873 (n=774)
+2026-08-29 01:13:34,257 [loho] hold=tool_calling AUC 0.906 (n=604)
+2026-08-29 01:13:34,367 [lobo] hold=appworld AUC 0.477 (n=893)
+2026-08-29 01:13:34,461 [lobo] hold=browsecompplus AUC 0.570 (n=1485)
+2026-08-29 01:13:34,617 [lobo] hold=swebench AUC 0.476 (n=622)
+2026-08-29 01:13:36,197 [in_format] static_pca8        AUC 0.786
+2026-08-29 01:13:36,366 [loho] hold=claude_code AUC 0.759 (n=524)
+2026-08-29 01:13:36,796 [loho] hold=openai_solo AUC 0.753 (n=994)
+2026-08-29 01:13:37,188 [loho] hold=smolagents_code AUC 0.824 (n=774)
+2026-08-29 01:13:37,556 [loho] hold=tool_calling AUC 0.658 (n=604)
+2026-08-29 01:13:37,889 [lobo] hold=appworld AUC 0.307 (n=893)
+2026-08-29 01:13:38,033 [lobo] hold=browsecompplus AUC 0.489 (n=1485)
+2026-08-29 01:13:38,507 [lobo] hold=swebench AUC 0.537 (n=622)
+2026-08-29 01:13:38,968 [in_format] meanvel            AUC 0.855
+2026-08-29 01:13:39,074 [loho] hold=claude_code AUC 0.824 (n=524)
+2026-08-29 01:13:39,140 [loho] hold=openai_solo AUC 0.640 (n=994)
+2026-08-29 01:13:39,221 [loho] hold=smolagents_code AUC 0.832 (n=774)
+2026-08-29 01:13:39,324 [loho] hold=tool_calling AUC 0.830 (n=604)
+2026-08-29 01:13:39,424 [lobo] hold=appworld AUC 0.622 (n=893)
+2026-08-29 01:13:39,475 [lobo] hold=browsecompplus AUC 0.641 (n=1485)
+2026-08-29 01:13:39,557 [lobo] hold=swebench AUC 0.544 (n=622)
+2026-08-29 01:13:45,840 [in_format] tfidf              AUC 0.943
+2026-08-29 01:13:47,058 [loho] hold=claude_code AUC 0.949 (n=524)
+2026-08-29 01:13:48,184 [loho] hold=openai_solo AUC 0.890 (n=994)
+2026-08-29 01:13:49,306 [loho] hold=smolagents_code AUC 0.948 (n=774)
+2026-08-29 01:13:50,434 [loho] hold=tool_calling AUC 0.890 (n=604)
+2026-08-29 01:13:51,954 [lobo] hold=appworld AUC 0.521 (n=893)
+2026-08-29 01:13:53,351 [lobo] hold=browsecompplus AUC 0.578 (n=1485)
+2026-08-29 01:13:54,560 [lobo] hold=swebench AUC 0.603 (n=622)
+2026-08-29 01:13:54,632 [in_format] tags               AUC 0.618
+2026-08-29 01:13:54,647 [loho] hold=claude_code AUC 0.501 (n=524)
+2026-08-29 01:13:54,659 [loho] hold=openai_solo AUC 0.587 (n=994)
+2026-08-29 01:13:54,673 [loho] hold=smolagents_code AUC 0.538 (n=774)
+2026-08-29 01:13:54,687 [loho] hold=tool_calling AUC 0.430 (n=604)
+2026-08-29 01:13:54,706 [lobo] hold=appworld AUC 0.440 (n=893)
+2026-08-29 01:13:54,720 [lobo] hold=browsecompplus AUC 0.513 (n=1485)
+2026-08-29 01:13:54,731 [lobo] hold=swebench AUC 0.428 (n=622)
+2026-08-29 01:13:54,751 [in_format] length             AUC 0.502
+2026-08-29 01:13:54,756 [loho] hold=claude_code AUC 0.480 (n=524)
+2026-08-29 01:13:54,762 [loho] hold=openai_solo AUC 0.473 (n=994)
+2026-08-29 01:13:54,768 [loho] hold=smolagents_code AUC 0.456 (n=774)
+2026-08-29 01:13:54,775 [loho] hold=tool_calling AUC 0.355 (n=604)
+2026-08-29 01:13:54,781 [lobo] hold=appworld AUC 0.416 (n=893)
+2026-08-29 01:13:54,786 [lobo] hold=browsecompplus AUC 0.513 (n=1485)
+2026-08-29 01:13:54,790 [lobo] hold=swebench AUC 0.430 (n=622)
+2026-08-29 01:14:02,378 [in_format] tfidf+meanvel      AUC 0.945
+2026-08-29 01:14:03,858 [loho] hold=claude_code AUC 0.932 (n=524)
+2026-08-29 01:14:05,184 [loho] hold=openai_solo AUC 0.879 (n=994)
+2026-08-29 01:14:06,758 [loho] hold=smolagents_code AUC 0.943 (n=774)
+2026-08-29 01:14:08,597 [loho] hold=tool_calling AUC 0.906 (n=604)
+2026-08-29 01:14:10,129 [lobo] hold=appworld AUC 0.512 (n=893)
+2026-08-29 01:14:11,489 [lobo] hold=browsecompplus AUC 0.610 (n=1485)
+2026-08-29 01:14:12,919 [lobo] hold=swebench AUC 0.729 (n=622)
+2026-08-29 01:14:13,060 [lomo] hold=DeepSeek-V3.2 AUC 0.826 (n=620)
+2026-08-29 01:14:13,229 [lomo] hold=Kimi-K2.5 AUC 0.801 (n=585)
+2026-08-29 01:14:13,346 [lomo] hold=claude-opus-4-5 AUC 0.755 (n=505)
+2026-08-29 01:14:13,467 [lomo] hold=gemini-3-pro-preview AUC 0.654 (n=625)
+2026-08-29 01:14:13,638 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.893 (n=665)
+2026-08-29 01:14:14,059 [lomo] hold=DeepSeek-V3.2 AUC 0.607 (n=620)
+2026-08-29 01:14:14,333 [lomo] hold=Kimi-K2.5 AUC 0.738 (n=585)
+2026-08-29 01:14:14,797 [lomo] hold=claude-opus-4-5 AUC 0.634 (n=505)
+2026-08-29 01:14:14,978 [lomo] hold=gemini-3-pro-preview AUC 0.571 (n=625)
+2026-08-29 01:14:15,479 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.819 (n=665)
+2026-08-29 01:14:15,620 [lomo] hold=DeepSeek-V3.2 AUC 0.724 (n=620)
+2026-08-29 01:14:15,723 [lomo] hold=Kimi-K2.5 AUC 0.669 (n=585)
+2026-08-29 01:14:15,858 [lomo] hold=claude-opus-4-5 AUC 0.676 (n=505)
+2026-08-29 01:14:15,971 [lomo] hold=gemini-3-pro-preview AUC 0.588 (n=625)
+2026-08-29 01:14:16,106 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.855 (n=665)
+2026-08-29 01:14:17,553 [lomo] hold=DeepSeek-V3.2 AUC 0.887 (n=620)
+2026-08-29 01:14:18,807 [lomo] hold=Kimi-K2.5 AUC 0.908 (n=585)
+2026-08-29 01:14:20,003 [lomo] hold=claude-opus-4-5 AUC 0.775 (n=505)
+2026-08-29 01:14:21,146 [lomo] hold=gemini-3-pro-preview AUC 0.771 (n=625)
+2026-08-29 01:14:22,226 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.890 (n=665)
+2026-08-29 01:14:22,242 [lomo] hold=DeepSeek-V3.2 AUC 0.365 (n=620)
+2026-08-29 01:14:22,259 [lomo] hold=Kimi-K2.5 AUC 0.413 (n=585)
+2026-08-29 01:14:22,272 [lomo] hold=claude-opus-4-5 AUC 0.484 (n=505)
+2026-08-29 01:14:22,284 [lomo] hold=gemini-3-pro-preview AUC 0.453 (n=625)
+2026-08-29 01:14:22,295 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.484 (n=665)
+2026-08-29 01:14:22,301 [lomo] hold=DeepSeek-V3.2 AUC 0.429 (n=620)
+2026-08-29 01:14:22,305 [lomo] hold=Kimi-K2.5 AUC 0.370 (n=585)
+2026-08-29 01:14:22,309 [lomo] hold=claude-opus-4-5 AUC 0.659 (n=505)
+2026-08-29 01:14:22,313 [lomo] hold=gemini-3-pro-preview AUC 0.464 (n=625)
+2026-08-29 01:14:22,317 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.312 (n=665)
+2026-08-29 01:14:24,083 [lomo] hold=DeepSeek-V3.2 AUC 0.891 (n=620)
+2026-08-29 01:14:25,886 [lomo] hold=Kimi-K2.5 AUC 0.905 (n=585)
+2026-08-29 01:14:27,504 [lomo] hold=claude-opus-4-5 AUC 0.761 (n=505)
+2026-08-29 01:14:28,882 [lomo] hold=gemini-3-pro-preview AUC 0.752 (n=625)
+2026-08-29 01:14:30,351 [lomo] hold=gpt-5.2-2025-12-11 AUC 0.895 (n=665)
+2026-08-29 01:14:30,354 [main] results written (4779s total)
+2026-08-29 01:14:30,355 [gates] {"A_monitor_transfers": true, "B_geometry_beats_lexical_drop": false, "C_velocity_null_recheck": true, "D_lowdim_transfers": true}
+2026-08-29 01:14:30,355 [main] done in 4779s. Read: results/exp8_summary.md

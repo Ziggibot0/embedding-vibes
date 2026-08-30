@@ -1,0 +1,6 @@
+using cuda/rocm device: AMD Radeon(TM) 8050S Graphics
+loaded 60000 sessions from big training corpus
+trained BPE tokenizer -> C:\Users\skell\Desktop\embedding-vibes\experiments\exp9_aspace_encoder\results\tokenizer.json (8000 vocab)
+encoding steps ...
+60000 usable sessions for MLM+BT, 0 labeled for prefix/outcome, 6 harness groups
+ep1 it   0 mlm=9.178 bt=7.031 vic=1.674 pfx=0.000 out=0.000 (4s)

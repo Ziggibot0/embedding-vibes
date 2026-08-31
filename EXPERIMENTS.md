@@ -18,20 +18,20 @@ Status tags: NOT STARTED · DESIGNED · RUNNING · DONE · SUPERSEDED · BLOCKED
 The sequence is ordered so each experiment DECIDES whether the next is worth
 doing. Do not skip ahead. Each step's result feeds the next gate.
 
-### exp10 — Matryoshka JEPA: the russian-doll fix   [DESIGNED]
-**File:** `experiments/exp10_matryoshka_jepa/DESIGN.md` (written 2026-08-30)
+### exp10 — Matryoshka JEPA: the russian-doll fix   [DONE]
+**File:** `experiments/exp10_matryoshka_jepa/DESIGN.md` + `RESULTS.md`
 **What:** Fix exp6's 64-dim bottleneck. The source embedder was dense
 (nomic v1), so crushing to 64 dims blurred the signal (0.960→0.862 AUC).
 Swap to nomic-embed-text:v1.5 (matryoshka) and TRUNCATE to 64/128/256/512/768;
 measure the task-AUC-vs-dimension elbow. Remove the learned Projector; keep
 Barlow Twins on the predictor.
-**Depends on:** nomic-embed-text:v1.5 pulled (DONE, on machine); exp3's 90 sessions.
-**Decision:** If 64-dim truncation recovers toward raw (≥0.90), the low-dim
-A-space program is back with a sound representation → exp11/exp12 viable.
-If not, we cleanly falsify "64 dims is enough" even with matryoshka → go to
-higher dims or exp14 (from-scratch encoder).
-**Gates:** G1 truncation>learned-crush (0.862/0.864) · G2 64-dim≥0.90 ·
-G3 elbow flat to 64 (drop<0.05) · G4 JEPA predictor still beats baseline ≥50%.
+**Result (2026-08-30):** russian-doll hypothesis CONFIRMED. 64-dim truncated
+AUC 0.928 vs exp6's learned 0.862 (G1 PASS), near raw 0.960 (G2 PASS). Elbow
+not perfectly flat (768=0.990, drop 0.062>0.05, G3 FAIL). JEPA predictor still
+weak (G4 FAIL, −40% at 64 dims) — a DATA problem, not representation.
+**Decision:** The representation is fixed; the PREDICTOR is now the bottleneck.
+Low-dim A-space is viable (0.928 at 64 dims). Next: more data for the
+predictor (exp16), not another representation change. exp11 is now well-founded.
 
 ### exp11 — Appworld transfer: understand WHY it transfers   [NOT STARTED]
 **File:** future `experiments/exp11_appworld_transfer/DESIGN.md`
@@ -168,7 +168,7 @@ trepidation. File: `docs/research_plan.md` RQ3.
 | 7/7a/7b/7c | Real-data gates | DONE | exp7_real_data_gate |
 | 8 | Harness-disjoint transfer | DONE | exp8_harness_disjoint |
 | 9 | A-space encoder (8-dim) | DONE (3 attempts) | exp9_aspace_encoder |
-| 10 | Matryoshka JEPA | **DESIGNED / NEXT** | exp10_matryoshka_jepa |
+| 10 | Matryoshka JEPA | **DONE** | exp10_matryoshka_jepa |
 | 11 | Appworld transfer why | NOT STARTED | (exp11) |
 | 12 | Honest outcome supervision | NOT STARTED | (exp12) |
 | 13 | A-space dim expansion | NOT STARTED | (exp13) |

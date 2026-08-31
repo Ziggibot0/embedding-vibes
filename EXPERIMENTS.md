@@ -33,6 +33,25 @@ weak (G4 FAIL, −40% at 64 dims) — a DATA problem, not representation.
 Low-dim A-space is viable (0.928 at 64 dims). Next: more data for the
 predictor (exp16), not another representation change. exp11 is now well-founded.
 
+### exp10.1 — Outcome crystallization (BT on same-outcome pairs)   [DONE]
+**File:** `experiments/exp10_1_outcome_crystallization/DESIGN.md` + `RESULTS.md`
+**What:** Train a 64-dim space so two sessions with the SAME outcome (both
+success or both failure), however different their paths, map to the same
+point. Barlow Twins on OUTCOME pairs (outcome crystallizes, path blurs).
+This is outcome supervision via contrastive pairs — the honest version of
+exp12. Data: exp8's 3,000 real sessions (5 harnesses, 3 benchmarks).
+**Result (2026-08-30):** outcome crystallization WORKS and is harness-invariant.
+LOHO mean 0.808 (G1 PASS, >0.60 bar), G4 PASS across 5 held-out harnesses.
+But BT alignment does NOT beat raw matryoshka truncation (0.808 vs 0.825,
+G2 FAIL) — the raw 64-dim matryoshka rep is the strongest outcome predictor
+(0.825 LOHO, 0.845 in-format, no training). smolagents_code regresses under
+BT (0.721 vs 0.884).
+**Decision:** The trepidation monitor is well-founded (0.825 LOHO,
+harness-invariant). Drop the BT outcome-pair objective (G2 fail) — raw
+matryoshka is the better, simpler baseline. Investigate smolagents_code
+(exp11-style). The matryoshka-vs-dense difference (exp10) + at-scale outcome
+signal (exp10.1) is the paper's centerpiece.
+
 ### exp11 — Appworld transfer: understand WHY it transfers   [NOT STARTED]
 **File:** future `experiments/exp11_appworld_transfer/DESIGN.md`
 **What:** exp9 attempt #3's one replicated positive: appworld LOBO
@@ -169,6 +188,7 @@ trepidation. File: `docs/research_plan.md` RQ3.
 | 8 | Harness-disjoint transfer | DONE | exp8_harness_disjoint |
 | 9 | A-space encoder (8-dim) | DONE (3 attempts) | exp9_aspace_encoder |
 | 10 | Matryoshka JEPA | **DONE** | exp10_matryoshka_jepa |
+| 10.1 | Outcome crystallization | **DONE** | exp10_1_outcome_crystallization |
 | 11 | Appworld transfer why | NOT STARTED | (exp11) |
 | 12 | Honest outcome supervision | NOT STARTED | (exp12) |
 | 13 | A-space dim expansion | NOT STARTED | (exp13) |
